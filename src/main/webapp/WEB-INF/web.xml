@@ -15,4 +15,13 @@
     <servlet-name>UserServlet</servlet-name>
     <url-pattern>/index.jsp</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>UserSignIn</servlet-name>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.Servlet.UserSignIn</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserSignIn</servlet-name>
+    <url-pattern>/UserSignIn</url-pattern>
+  </servlet-mapping>
 </web-app>
