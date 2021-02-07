@@ -1,5 +1,6 @@
 package ru.Korotaev.ComputerStore.RegistrationOrSignIn.Servlet;
 
+
 import ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.UserDao;
 import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.User;
 
@@ -9,14 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+
 
 import static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.DRIVER;
 
 public class UserServlet extends HttpServlet{
+
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setContentType("text/html");
         resp.setCharacterEncoding("UTF-8");
 
@@ -42,7 +43,7 @@ public class UserServlet extends HttpServlet{
                 .append("</form>\r\n")
                 .append("</br>")
                 .append("<h3>I have account yet!</h3>")
-                .append("<a href=\"UserSignIn\">Sign in</a>")
+                .append("<a href=\"UserSignIn1\">Sign in</a>")
                 .append("</center>")
                 .append("</body>\r\n")
                 .append("</html>\r\n");
@@ -65,20 +66,6 @@ public class UserServlet extends HttpServlet{
         user.setPassword(password);
         userDao.save(user);
 
-//        PrintWriter pw = resp.getWriter();
-//        pw.append("<!DOCTYPE html>\r\n")
-//                .append("<html>\r\n")
-//                .append("<head>\r\n")
-//                .append("<title> Welcome message </title>\r\n")
-//                .append("</head>\r\n")
-//                .append("<body>\r\n")
-//                .append("Welcome " + login + "!\r\n")
-//                .append("You can to create your computer!\r\n")
-//                .append("</br>")
-//                .append("")
-//                .append("</form>\r\n")
-//                .append("</body>\r\n")
-//                .append("</html>\r\n");
         req.getSession().setAttribute("user",user);
         req.getRequestDispatcher("WEB-INF/ComputerStore/MainPage.jsp").forward(req,resp);
     }
