@@ -12,7 +12,7 @@ import java.sql.*;
 
 import static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.*;
 
-@WebServlet("/SignIn")
+
 public class UserSignIn1 extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -32,7 +32,7 @@ public class UserSignIn1 extends HttpServlet {
             Connection connection = DriverManager.getConnection(URL,USER,PASSWORD);
             connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
             connection.setAutoCommit(false);
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Users where login = ? and password=?"); //может написать ComputerStore.users?
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Users where login = ? and password=?");
             preparedStatement.setString(1,login);
             preparedStatement.setString(2,password);
 

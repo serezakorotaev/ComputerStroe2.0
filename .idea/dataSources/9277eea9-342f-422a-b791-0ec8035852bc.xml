@@ -788,9 +788,10 @@ false posixrules
     <database id="2" parent="1" name="ComputerStore">
       <ObjectId>24817</ObjectId>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>980</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1132</IntrospectionStateNumber>
       <Current>1</Current>
       <Relations>sequence|table|24824|24818|1
+sequence|table|24835|24829|1
 </Relations>
     </database>
     <database id="3" parent="1" name="MusicPlayer3.0">
@@ -873,7 +874,7 @@ UC/10
 </Acl>
       <StateNumber>352</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>981</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1133</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <extension id="19" parent="2" name="plpgsql">
@@ -966,18 +967,105 @@ UC/10
       <HandlerId>335</HandlerId>
       <Type>index</Type>
     </access-method>
-    <sequence id="30" parent="18" name="users_id_seq">
+    <sequence id="30" parent="18" name="madecomputers_id_seq">
+      <ObjectId>24835</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>1120</StateNumber>
+      <DataType>bigint|0s</DataType>
+    </sequence>
+    <sequence id="31" parent="18" name="users_id_seq">
       <ObjectId>24824</ObjectId>
       <Owner>postgres</Owner>
       <StateNumber>975</StateNumber>
       <DataType>bigint|0s</DataType>
     </sequence>
-    <table id="31" parent="18" name="users">
+    <table id="32" parent="18" name="madecomputers">
+      <ObjectId>24829</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>1131</StateNumber>
+    </table>
+    <table id="33" parent="18" name="users">
       <ObjectId>24818</ObjectId>
       <Owner>postgres</Owner>
       <StateNumber>972</StateNumber>
     </table>
-    <column id="32" parent="31" name="id">
+    <column id="34" parent="32" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1122</StateNumber>
+      <DefaultExpression>nextval(&apos;madecomputers_id_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="35" parent="32" name="name">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>1117</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="36" parent="32" name="maneplate">
+      <Position>3</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>1117</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="37" parent="32" name="powerunit">
+      <Position>4</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>1117</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="38" parent="32" name="processor">
+      <Position>5</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>1117</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="39" parent="32" name="rammemory">
+      <Position>6</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>1117</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="40" parent="32" name="videocard">
+      <Position>7</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>1117</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="41" parent="32" name="count">
+      <Position>8</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>1131</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="42" parent="32" name="madecomputers_id_uindex">
+      <ObjectId>24838</ObjectId>
+      <StateNumber>1124</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationIds>0</CollationIds>
+      <ClassIds>1978</ClassIds>
+    </index>
+    <index id="43" parent="32" name="madecomputers_pk">
+      <ObjectId>24839</ObjectId>
+      <StateNumber>1125</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationIds>0</CollationIds>
+      <ClassIds>1978</ClassIds>
+    </index>
+    <key id="44" parent="32" name="madecomputers_pk">
+      <ObjectId>24840</ObjectId>
+      <StateNumber>1125</StateNumber>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>madecomputers_pk</UnderlyingIndexName>
+    </key>
+    <column id="45" parent="33" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
@@ -985,19 +1073,19 @@ UC/10
       <DefaultExpression>nextval(&apos;users_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
-    <column id="33" parent="31" name="login">
+    <column id="46" parent="33" name="login">
       <Position>2</Position>
       <DataType>varchar|0s</DataType>
       <StateNumber>972</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="34" parent="31" name="password">
+    <column id="47" parent="33" name="password">
       <Position>3</Position>
       <DataType>varchar|0s</DataType>
       <StateNumber>972</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="35" parent="31" name="users_pk">
+    <index id="48" parent="33" name="users_pk">
       <ObjectId>24827</ObjectId>
       <StateNumber>979</StateNumber>
       <ColNames>id</ColNames>
@@ -1007,7 +1095,7 @@ UC/10
       <CollationIds>0</CollationIds>
       <ClassIds>1978</ClassIds>
     </index>
-    <key id="36" parent="31" name="users_pk">
+    <key id="49" parent="33" name="users_pk">
       <ObjectId>24828</ObjectId>
       <StateNumber>979</StateNumber>
       <ColNames>id</ColNames>

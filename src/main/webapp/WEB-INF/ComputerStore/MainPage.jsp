@@ -18,6 +18,17 @@ Welcome
 <%=user.getLogin()%> !
 <br/>
 You can to create your computer!
+</br>
+<center><p>
+    <a href="/CreateComputer">Create your own computer from components</a>
+</p>
+    <p>
+    <a href="ReadyMadeComputer">Ready-made computers</a>
+    </p><p>
+    <a href="/ShoppingCart">Shopping cart</a>
+    </p>
 
+
+</center>
 </body>
 </html>
