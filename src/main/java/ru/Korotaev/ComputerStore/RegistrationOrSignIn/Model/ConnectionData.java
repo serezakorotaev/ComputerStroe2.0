@@ -1,5 +1,7 @@
 package ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model;
 
+
+
 public class ConnectionData {
     public static final String DRIVER = "org.postgresql.Driver";
     public static final String DB = "ComputerStore";
@@ -7,4 +9,5 @@ public class ConnectionData {
     public static final String USER = "postgres";
     public static final String PASSWORD = "Sae252721";
     public static final String SELECT = "SELECT * FROM MadeComputers";
+
 }

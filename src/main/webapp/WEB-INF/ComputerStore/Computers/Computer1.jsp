@@ -25,5 +25,11 @@
 <%= computer.toString()%>
 </br>
 Количество: <%=computer.getCount()%>
+<form action="Computer1" method="POST">
+    Введите кол-во, которое вы хотите приобрести:
+    <p>
+        <input type="text" name="count"/>
+    <input type="submit" value="Sign in"/>
+</form>
 </body>
 </html>
