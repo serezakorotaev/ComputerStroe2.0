@@ -1,5 +1,6 @@
 package ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets;
 
+import ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.ComputerDao;
 import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.Computer;
 
 import javax.servlet.ServletException;
@@ -24,23 +25,15 @@ String strCount = req.getParameter("count");
 int count = Integer.parseInt(strCount);
 
 
-    Computer computer = new Computer();
-    try{
-        Class.forName(DRIVER);
-        Connection connection = DriverManager.getConnection(URL,USER,PASSWORD);
-        connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
-        connection.setAutoCommit(false);
-        PreparedStatement preparedStatement = connection.prepareStatement("SELECT * from MadeComputers where id = ?");
-        preparedStatement.setInt(1,1);
-        ResultSet resultSet = preparedStatement.executeQuery();
-
-        if(resultSet.next()){
-            computer.setCount(resultSet.getInt("count"));
+    Computer computer = new Computer(1);
+        ComputerDao computerDao = new ComputerDao();
+        try{
+            Class.forName(DRIVER);
+            computerDao.select(computer);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
-        connection.close();
-    } catch (ClassNotFoundException | SQLException e) {
-        e.printStackTrace();
-    }
+
         int newCount = computer.getCount() - count;
     if(newCount<0){ getServletContext().getRequestDispatcher("/WEB-INF/ComputerStore/Computers/Computer1.jsp").forward(req,resp);}
     else {
@@ -48,17 +41,11 @@ int count = Integer.parseInt(strCount);
             Class.forName(DRIVER);
             Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
             connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
-            connection.setAutoCommit(false);
+//            connection.setAutoCommit(false);
 
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE MadeComputers SET count=? where id=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("Update madecomputers SET counts=? where id=1 ");
             preparedStatement.setInt(1, newCount);
-            preparedStatement.setInt(2, computer.getId());
-
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            if (resultSet.next()){
-                computer.setCount(newCount);
-            }
+            preparedStatement.executeUpdate();
             req.getRequestDispatcher("/WEB-INF/ComputerStore/ThankYou/Thankyou.jsp").forward(req,resp);
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();

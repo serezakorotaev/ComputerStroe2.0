@@ -23,7 +23,7 @@ public class ComputerDao {
                 computer.setProcessor(resultSet.getString("processor"));
                 computer.setRammemory(resultSet.getString("rammemory"));
                 computer.setVideocard(resultSet.getString("videocard"));
-                computer.setCount(resultSet.getInt("count"));
+                computer.setCount(resultSet.getInt("counts"));
             }
             connection.close();
         } catch (SQLException throwable) {

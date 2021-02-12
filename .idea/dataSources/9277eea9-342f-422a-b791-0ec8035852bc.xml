@@ -788,7 +788,7 @@ false posixrules
     <database id="2" parent="1" name="ComputerStore">
       <ObjectId>24817</ObjectId>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>1132</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1150</IntrospectionStateNumber>
       <Current>1</Current>
       <Relations>sequence|table|24824|24818|1
 sequence|table|24835|24829|1
@@ -874,7 +874,7 @@ UC/10
 </Acl>
       <StateNumber>352</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>1133</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1151</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <extension id="19" parent="2" name="plpgsql">
@@ -1033,10 +1033,10 @@ UC/10
       <StateNumber>1117</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="41" parent="32" name="count">
+    <column id="41" parent="32" name="counts">
       <Position>8</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>1131</StateNumber>
+      <StateNumber>1149</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <index id="42" parent="32" name="madecomputers_id_uindex">
