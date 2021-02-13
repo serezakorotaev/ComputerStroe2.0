@@ -31,5 +31,6 @@
         <input type="text" name="count"/>
     <input type="submit" value="Sign in"/>
 </form>
+${message}
 </body>
 </html>

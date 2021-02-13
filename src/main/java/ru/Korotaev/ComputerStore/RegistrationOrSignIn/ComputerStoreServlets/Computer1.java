@@ -35,13 +35,15 @@ int count = Integer.parseInt(strCount);
         }
 
         int newCount = computer.getCount() - count;
-    if(newCount<0){ getServletContext().getRequestDispatcher("/WEB-INF/ComputerStore/Computers/Computer1.jsp").forward(req,resp);}
+
+    if(newCount<0){String message= "Столько товара нет в наличии";
+    req.setAttribute("message", message);
+        getServletContext().getRequestDispatcher("/WEB-INF/ComputerStore/Computers/Computer1.jsp").forward(req,resp);}
     else {
         try {
             Class.forName(DRIVER);
             Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
             connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
-//            connection.setAutoCommit(false);
 
             PreparedStatement preparedStatement = connection.prepareStatement("Update madecomputers SET counts=? where id=1 ");
             preparedStatement.setInt(1, newCount);
