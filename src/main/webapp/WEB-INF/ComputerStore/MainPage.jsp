@@ -20,7 +20,7 @@ Welcome
 You can to create your computer!
 </br>
 <center><p>
-    <a href="/CreateComputer">Create your own computer from components</a>
+    <a href="CreateComputer">Create your own computer from components</a>
 </p>
     <p>
     <a href="ReadyMadeComputer">Ready-made computers</a>

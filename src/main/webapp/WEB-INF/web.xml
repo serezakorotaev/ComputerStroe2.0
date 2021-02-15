@@ -60,4 +60,59 @@
     <servlet-name>Computer3</servlet-name>
     <url-pattern>/Computer3</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>CreateComputer</servlet-name>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Components.CreateComputer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateComputer</servlet-name>
+    <url-pattern>/CreateComputer</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>ManePlate</servlet-name>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Components.ManePlateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ManePlate</servlet-name>
+    <url-pattern>/maneplate</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>PowerUnit</servlet-name>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Components.PowerUnitServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PowerUnit</servlet-name>
+    <url-pattern>/powerunit</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>Processor</servlet-name>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Components.ProcessorServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Processor</servlet-name>
+    <url-pattern>/processor</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>RamMemory</servlet-name>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Components.RamMemoryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RamMemory</servlet-name>
+    <url-pattern>/rammemory</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>VideoCard</servlet-name>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Components.VideoCardServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VideoCard</servlet-name>
+    <url-pattern>/videocard</url-pattern>
+  </servlet-mapping>
 </web-app>
