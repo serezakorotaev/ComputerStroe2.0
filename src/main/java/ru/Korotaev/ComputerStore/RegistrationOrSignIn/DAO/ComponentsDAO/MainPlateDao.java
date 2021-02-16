@@ -1,16 +1,16 @@
 package ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.ComponentsDAO;
 
-import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.ManePlate;
+import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.MainPlate;
 
 
 import java.sql.*;
 
 import static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.*;
 
-public class ManePlateDao {
+public class MainPlateDao {
 
-    public void select(ManePlate manePlate) {
-        final String SELECT_QUERY = "Select * from maneplate where id=?";
+    public void select(MainPlate manePlate) {
+        final String SELECT_QUERY = "Select * from mainplate where id=?";
 
         try {
             Class.forName(DRIVER);

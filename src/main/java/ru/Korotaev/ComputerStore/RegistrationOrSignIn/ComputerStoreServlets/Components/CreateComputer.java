@@ -9,6 +9,6 @@ import java.io.IOException;
 public class CreateComputer extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/WEB-INF/ComputerStore/Components/CreateComputer/CreateComputer.jsp").forward(req,resp);
+        getServletContext().getRequestDispatcher("/WEB-INF/ComputerStore/Components/CreateComputer/CreateComputer.jsp").forward(req, resp);
     }
 }

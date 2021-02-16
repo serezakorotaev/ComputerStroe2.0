@@ -16,13 +16,22 @@ Power Units:
 </br>
 <%
     PowerUnitDao powerUnitDao = new PowerUnitDao();
-    for(int i=0;i<5;i++){
+    for(int i=1;i<=5;i++){
         PowerUnit powerUnit = new PowerUnit(i);
         powerUnitDao.select(powerUnit);%>
 <%= powerUnit.getName()%>
 Price: <%= powerUnit.getPrice()%>
-<br>
+</br>
 Count: <%=powerUnit.getCounts()%>
+</br>
+<form action="powerunit" method="POST">
+    Введите кол-во, которое вы хотите приобрести:
+    <p>
+        <input type="text" name="count"/>
+        <input type="submit" value="Buy"/>
+</form>
+</br>
+<% powerUnit.setNumber(i);%>
 <% }
 %>
 </body>

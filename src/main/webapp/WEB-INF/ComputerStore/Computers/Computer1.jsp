@@ -29,7 +29,7 @@
     Введите кол-во, которое вы хотите приобрести:
     <p>
         <input type="text" name="count"/>
-    <input type="submit" value="Sign in"/>
+    <input type="submit" value="Buy"/>
 </form>
 ${message}
 </body>

@@ -1,7 +1,5 @@
 package ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.ComponentsDAO;
 
-import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.ManePlate;
-
 import java.sql.*;
 
 import static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.*;

@@ -73,7 +73,7 @@
   
   <servlet>
     <servlet-name>ManePlate</servlet-name>
-    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Components.ManePlateServlet</servlet-class>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Components.MainPlateServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ManePlate</servlet-name>

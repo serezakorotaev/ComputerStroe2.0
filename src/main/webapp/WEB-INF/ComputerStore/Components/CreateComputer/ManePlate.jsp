@@ -1,5 +1,5 @@
-<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.ManePlate" %>
-<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.ComponentsDAO.ManePlateDao" %><%--
+<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.MainPlate" %>
+<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.ComponentsDAO.MainPlateDao" %><%--
   Created by IntelliJ IDEA.
   User: Mvideo
   Date: 15.02.2021
@@ -15,16 +15,27 @@
 Mane Plates:
 </br>
 <%
-    ManePlateDao manePlateDao = new ManePlateDao();
-    for(int i=0;i<5;i++){
-        ManePlate manePlate = new ManePlate(i);
-        manePlateDao.select(manePlate);%>
-        <%= manePlate.getName()%>
-Price: <%= manePlate.getPrice()%>
-<br>
-Count: <%=manePlate.getCounts()%>
+    MainPlateDao mainPlateDao = new MainPlateDao();
+    for(int i=1;i<=5;i++){
+        MainPlate mainPlate = new MainPlate(i);
+        mainPlateDao.select(mainPlate);%>
+        <%= mainPlate.getName()%>
+Price: <%= mainPlate.getPrice()%>
+</br>
+Count: <%=mainPlate.getCounts()%>
+</br>
+<% Integer s = i;%>
+<form action="maneplate" method="POST">
+    Введите кол-во, которое вы хотите приобрести:
+    <p>
+        <input type="text" name="count-<%=s%>"/>
+        <input type="submit" value="Buy"/>
+</form>
+
+</br>
    <% }
 %>
+</br>
 
 </body>
 </html>

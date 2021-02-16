@@ -2,13 +2,11 @@ package ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel;
 
 import java.util.Objects;
 
-public class VideoCard {
+public class MainPlate {
     private int id;
     private String name;
     private int price;
     private int counts;
-
-
 
     private int number;
     public int getNumber() {
@@ -18,9 +16,10 @@ public class VideoCard {
     public void setNumber(int number) {
         this.number = number;
     }
-    public VideoCard(){}
 
-    public VideoCard(int id) {
+    public MainPlate(){}
+
+    public MainPlate(int id) {
         this.id = id;
     }
 
@@ -56,12 +55,14 @@ public class VideoCard {
         this.counts = counts;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        VideoCard videoCard = (VideoCard) o;
-        return id == videoCard.id && price == videoCard.price && counts == videoCard.counts && name.equals(videoCard.name);
+        MainPlate manePlate = (MainPlate) o;
+        return id == manePlate.id && price == manePlate.price && counts == manePlate.counts && name.equals(manePlate.name);
     }
 
     @Override
@@ -71,7 +72,7 @@ public class VideoCard {
 
     @Override
     public String toString() {
-        return "VideoCard{" +
+        return "ManePlate{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", price=" + price +

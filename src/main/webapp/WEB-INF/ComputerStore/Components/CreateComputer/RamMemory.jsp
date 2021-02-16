@@ -21,8 +21,17 @@ RAM memories:
         ramMemoryDao.select(ramMemory);%>
 <%= ramMemory.getName()%>
 Price: <%= ramMemory.getPrice()%>
-<br>
+</br>
 Count: <%=ramMemory.getCounts()%>
+</br>
+<form action="rammemory" method="POST">
+    Введите кол-во, которое вы хотите приобрести:
+    <p>
+        <input type="text" name="count"/>
+        <input type="submit" value="Buy"/>
+</form>
+<% ramMemory.setNumber(i);%>
+</br>
 <% }
 %>
 </body>

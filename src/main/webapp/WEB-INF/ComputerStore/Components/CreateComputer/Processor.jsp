@@ -23,6 +23,15 @@ Processors:
 Price: <%= processor.getPrice()%>
 <br>
 Count: <%=processor.getCounts()%>
+</br>
+<form action="processor" method="POST">
+    Введите кол-во, которое вы хотите приобрести:
+    <p>
+        <input type="text" name="count"/>
+        <input type="submit" value="Buy"/>
+</form>
+<% processor.setNumber(i);%>
+</br>
 <% }
 %>
 </body>

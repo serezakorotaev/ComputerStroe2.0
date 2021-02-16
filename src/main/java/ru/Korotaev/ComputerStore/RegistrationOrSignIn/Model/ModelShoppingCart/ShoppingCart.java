@@ -1,18 +1,17 @@
-package ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel;
+package ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ModelShoppingCart;
 
 import java.util.Objects;
 
-public class ManePlate {
-    private int id;
+public class ShoppingCart {
+    private  int id;
     private String name;
     private int price;
     private int counts;
 
-    public ManePlate(){}
-
-    public ManePlate(int id) {
+    public ShoppingCart(){ }
+   public ShoppingCart(int id){
         this.id = id;
-    }
+   }
 
     public int getId() {
         return id;
@@ -50,22 +49,12 @@ public class ManePlate {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ManePlate manePlate = (ManePlate) o;
-        return id == manePlate.id && price == manePlate.price && counts == manePlate.counts && name.equals(manePlate.name);
+        ShoppingCart that = (ShoppingCart) o;
+        return id == that.id && price == that.price && counts == that.counts && name.equals(that.name);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(id, name, price, counts);
-    }
-
-    @Override
-    public String toString() {
-        return "ManePlate{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                ", counts=" + counts +
-                '}';
     }
 }

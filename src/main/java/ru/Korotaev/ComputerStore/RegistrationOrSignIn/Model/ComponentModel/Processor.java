@@ -8,6 +8,16 @@ public class Processor {
     private int price;
     private int counts;
 
+
+    private int number;
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
     public Processor(){}
 
     public Processor(int id) {

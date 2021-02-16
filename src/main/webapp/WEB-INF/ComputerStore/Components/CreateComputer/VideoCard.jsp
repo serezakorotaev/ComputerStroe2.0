@@ -23,6 +23,15 @@ Video cards:
 Price: <%= videoCard.getPrice()%>
 <br>
 Count: <%=videoCard.getCounts()%>
+</br>
+<form action="videocard" method="POST">
+    Введите кол-во, которое вы хотите приобрести:
+    <p>
+        <input type="text" name="count"/>
+        <input type="submit" value="Buy"/>
+</form>
+<% videoCard.setNumber(i);%>
+</br>
 <% }
 %>
 </body>

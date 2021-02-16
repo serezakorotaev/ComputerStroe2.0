@@ -8,6 +8,15 @@ public class PowerUnit {
     private int price;
     private int counts;
 
+    private int number;
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
     public PowerUnit(){}
 
     public PowerUnit(int id) {
