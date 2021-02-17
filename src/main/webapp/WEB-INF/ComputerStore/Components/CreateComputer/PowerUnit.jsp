@@ -24,15 +24,17 @@ Price: <%= powerUnit.getPrice()%>
 </br>
 Count: <%=powerUnit.getCounts()%>
 </br>
+<% Integer s = i;%>
 <form action="powerunit" method="POST">
     Введите кол-во, которое вы хотите приобрести:
     <p>
-        <input type="text" name="count"/>
+        <input type="text" name="count-<%=s%>"/>
         <input type="submit" value="Buy"/>
 </form>
 </br>
 <% powerUnit.setNumber(i);%>
 <% }
 %>
+<input type="button" onclick="history.back();" value="Назад"/>
 </body>
 </html>

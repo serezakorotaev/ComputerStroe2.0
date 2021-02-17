@@ -36,6 +36,6 @@ Count: <%=mainPlate.getCounts()%>
    <% }
 %>
 </br>
-
+<input type="button" onclick="history.back();" value="Назад"/>
 </body>
 </html>

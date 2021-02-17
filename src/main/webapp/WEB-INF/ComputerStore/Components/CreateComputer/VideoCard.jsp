@@ -24,15 +24,18 @@ Price: <%= videoCard.getPrice()%>
 <br>
 Count: <%=videoCard.getCounts()%>
 </br>
+<% Integer s = i;%>
 <form action="videocard" method="POST">
     Введите кол-во, которое вы хотите приобрести:
     <p>
-        <input type="text" name="count"/>
+        <input type="text" name="count-<%=s%>"/>
         <input type="submit" value="Buy"/>
 </form>
 <% videoCard.setNumber(i);%>
 </br>
 <% }
 %>
+<input type="button" onclick="history.back();" value="Назад"/>
+<a href=""
 </body>
 </html>

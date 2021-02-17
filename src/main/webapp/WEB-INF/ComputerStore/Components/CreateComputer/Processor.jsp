@@ -24,15 +24,17 @@ Price: <%= processor.getPrice()%>
 <br>
 Count: <%=processor.getCounts()%>
 </br>
+<% Integer s = i;%>
 <form action="processor" method="POST">
     Введите кол-во, которое вы хотите приобрести:
     <p>
-        <input type="text" name="count"/>
+        <input type="text" name="count-<%=s%>"/>
         <input type="submit" value="Buy"/>
 </form>
 <% processor.setNumber(i);%>
 </br>
 <% }
 %>
+<input type="button" onclick="history.back();" value="Назад"/>
 </body>
 </html>
