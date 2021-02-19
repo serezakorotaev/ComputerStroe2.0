@@ -22,7 +22,27 @@
     }
     computerDao.select(computer);
 %>
-<%= computer.toString()%>
+Computer1! SuperPuper computer!
+</br>
+<br>
+Main plate:
+<%= computer.getManeplate()%>
+</br>
+<br>
+Power unit:
+<%= computer.getPowerunit()%>
+</br>
+<br>
+Processor:
+<%= computer.getProcessor()%>
+</br>
+<br>
+RAM memory:
+<%= computer.getRammemory()%>
+</br>
+<br>
+Video card:
+<%= computer.getVideocard()%>
 </br>
 Количество: <%=computer.getCount()%>
 <form action="Computer2" method="POST">

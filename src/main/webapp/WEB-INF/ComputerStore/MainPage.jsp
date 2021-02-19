@@ -25,7 +25,7 @@ You can to create your computer!
     <p>
     <a href="ReadyMadeComputer">Ready-made computers</a>
     </p><p>
-    <a href="/ShoppingCart">Shopping cart</a>
+    <a href="ShoppingCartServlet">Shopping cart</a>
     </p>
 
 

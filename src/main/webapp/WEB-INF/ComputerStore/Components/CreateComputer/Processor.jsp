@@ -31,10 +31,13 @@ Count: <%=processor.getCounts()%>
         <input type="text" name="count-<%=s%>"/>
         <input type="submit" value="Buy"/>
 </form>
-<% processor.setNumber(i);%>
 </br>
 <% }
 %>
-<input type="button" onclick="history.back();" value="Назад"/>
+<a href="CreateComputer">назад</a>
+<p>
+    <a href="ShoppingCartServlet">Shopping cart</a>
+</p>
+<a href="mainpage">Main page</a>
 </body>
 </html>

@@ -27,6 +27,8 @@ public class PowerUnitServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         for(int i=1;i<=5;i++){
             String stringCount = req.getParameter("count-"+i);
+            if(stringCount==null)
+                continue;
             int count = Integer.parseInt(stringCount);
             if(count!=0){
                 PowerUnitDao powerUnitDao = new PowerUnitDao();
@@ -48,7 +50,7 @@ public class PowerUnitServlet extends HttpServlet {
                 powerUnitDao.select(powerUnit);
                 try{Class.forName(DRIVER);
                     Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-                    PreparedStatement preparedStatement = connection.prepareStatement("UPDATE mainPlate set counts=? where id=?");
+                    PreparedStatement preparedStatement = connection.prepareStatement("UPDATE powerunit set counts=? where id=?");
                     preparedStatement.setInt(1,powerUnit.getCounts()-count);
                     preparedStatement.setInt(2,powerUnit.getId());
                     preparedStatement.executeUpdate();
@@ -57,13 +59,13 @@ public class PowerUnitServlet extends HttpServlet {
                     e.printStackTrace();
                 }
 
-                req.getRequestDispatcher("/WEB-INF/ComputerStore/Components/CreateComputer/ManePlate.jsp").forward(req,resp);
+                req.getRequestDispatcher("/WEB-INF/ComputerStore/Components/CreateComputer/PowerUnit.jsp").forward(req,resp);
 
                 break;
             }
 
         }
-        req.getRequestDispatcher("/WEB-INF/ComputerStore/Components/CreateComputer/ManePlate.jsp").forward(req,resp);
+        req.getRequestDispatcher("/WEB-INF/ComputerStore/Components/CreateComputer/PowerUnit.jsp").forward(req,resp);
 
     }
 }

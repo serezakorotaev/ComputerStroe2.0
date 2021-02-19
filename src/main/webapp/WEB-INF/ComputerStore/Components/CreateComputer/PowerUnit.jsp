@@ -32,9 +32,12 @@ Count: <%=powerUnit.getCounts()%>
         <input type="submit" value="Buy"/>
 </form>
 </br>
-<% powerUnit.setNumber(i);%>
 <% }
 %>
-<input type="button" onclick="history.back();" value="Назад"/>
+<a href="CreateComputer">назад</a>
+<p>
+    <a href="ShoppingCartServlet">Shopping cart</a>
+</p>
+<a href="mainpage">Main page</a>
 </body>
 </html>

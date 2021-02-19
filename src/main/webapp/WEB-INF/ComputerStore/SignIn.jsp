@@ -19,16 +19,20 @@
         Enter your login:
     <p>
         <input type="text" name="login" />
-        <div style="color:red" th:if="${fields.hasErrors('login')}" th:errors="*{login}">login should be not empty :)</div>
+        <div style="color:green" th:if="${fields.hasErrors('login')}" th:errors="*{login}">login should be not empty :)</div>
     </p>
     </br>
         Enter your password:
         <p>
             <input type="password" name="password"/>
-        <div style="color:red" th:if="${fields.hasErrors('password')}" th:errors="*{password}">password should be not empty :)</div>
+        <div style="color:green" th:if="${fields.hasErrors('password')}" th:errors="*{password}">password should be not empty :)</div>
         </p>
         <input type="submit" value="Sign in"/>
     </form>
+    <div style="color: red"><h2>${errorMessage} </h2> </div>
+
+    <br>
+    <button type="button"><a href="index.jsp">назад на регистрацию</a> </button>
 </center>
 
 </body>

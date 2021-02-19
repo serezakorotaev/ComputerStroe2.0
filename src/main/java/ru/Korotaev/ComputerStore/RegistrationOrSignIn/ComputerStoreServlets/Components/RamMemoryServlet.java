@@ -27,6 +27,8 @@ public class RamMemoryServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         for(int i=1;i<=5;i++){
             String stringCount = req.getParameter("count-"+i);
+            if(stringCount==null)
+                continue;
             int count = Integer.parseInt(stringCount);
             if(count!=0){
                 RamMemoryDao ramMemoryDao = new RamMemoryDao();
@@ -48,7 +50,7 @@ public class RamMemoryServlet extends HttpServlet {
                 ramMemoryDao.select(ramMemory);
                 try{Class.forName(DRIVER);
                     Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-                    PreparedStatement preparedStatement = connection.prepareStatement("UPDATE mainPlate set counts=? where id=?");
+                    PreparedStatement preparedStatement = connection.prepareStatement("UPDATE rammemory set counts=? where id=?");
                     preparedStatement.setInt(1,ramMemory.getCounts()-count);
                     preparedStatement.setInt(2,ramMemory.getId());
                     preparedStatement.executeUpdate();
@@ -57,13 +59,13 @@ public class RamMemoryServlet extends HttpServlet {
                     e.printStackTrace();
                 }
 
-                req.getRequestDispatcher("/WEB-INF/ComputerStore/Components/CreateComputer/ManePlate.jsp").forward(req,resp);
+                req.getRequestDispatcher("/WEB-INF/ComputerStore/Components/CreateComputer/RamMemory.jsp").forward(req,resp);
 
                 break;
             }
 
         }
-        req.getRequestDispatcher("/WEB-INF/ComputerStore/Components/CreateComputer/ManePlate.jsp").forward(req,resp);
+        req.getRequestDispatcher("/WEB-INF/ComputerStore/Components/CreateComputer/RamMemory.jsp").forward(req,resp);
 
     }
 }

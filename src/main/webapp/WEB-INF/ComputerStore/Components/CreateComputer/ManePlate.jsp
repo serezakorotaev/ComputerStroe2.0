@@ -28,7 +28,7 @@ Count: <%=mainPlate.getCounts()%>
 <form action="maneplate" method="POST">
     Введите кол-во, которое вы хотите приобрести:
     <p>
-        <input type="text" name="count-<%=s%>"/>
+        <input type="text" name="count-<%=i%>"/>
         <input type="submit" value="Buy"/>
 </form>
 
@@ -36,6 +36,9 @@ Count: <%=mainPlate.getCounts()%>
    <% }
 %>
 </br>
-<input type="button" onclick="history.back();" value="Назад"/>
+<a href="CreateComputer">назад</a>
+</br>
+<a href="ShoppingCartServlet">Shopping cart</a>
+<a href="mainpage">Main page</a>
 </body>
 </html>

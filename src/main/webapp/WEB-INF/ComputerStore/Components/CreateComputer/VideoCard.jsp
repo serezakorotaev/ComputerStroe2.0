@@ -31,11 +31,13 @@ Count: <%=videoCard.getCounts()%>
         <input type="text" name="count-<%=s%>"/>
         <input type="submit" value="Buy"/>
 </form>
-<% videoCard.setNumber(i);%>
 </br>
 <% }
 %>
-<input type="button" onclick="history.back();" value="Назад"/>
-<a href=""
+<a href="CreateComputer">назад</a>
+<p>
+    <a href="ShoppingCartServlet">Shopping cart</a>
+</p>
+<a href="mainpage">Main page</a>
 </body>
 </html>

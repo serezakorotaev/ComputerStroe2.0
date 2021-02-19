@@ -26,6 +26,8 @@ public class MainPlateServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
      for(int i=1;i<=5;i++){
          String stringCount = req.getParameter("count-"+i);
+         if(stringCount==null)
+         continue;
          int count = Integer.parseInt(stringCount);
          if(count!=0){
              MainPlateDao mainPlateDao = new MainPlateDao();

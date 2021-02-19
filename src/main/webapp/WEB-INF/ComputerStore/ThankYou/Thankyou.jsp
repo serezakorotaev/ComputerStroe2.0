@@ -11,6 +11,8 @@
     <title>Thank You!</title>
 </head>
 <body>
-hi
+thank you for your purchase!
+
+<a href="mainpage">Main page</a>
 </body>
 </html>

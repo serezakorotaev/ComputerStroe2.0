@@ -26,6 +26,8 @@ public class VideoCardServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         for(int i=1;i<=5;i++){
             String stringCount = req.getParameter("count-"+i);
+            if(stringCount==null)
+                continue;
             int count = Integer.parseInt(stringCount);
             if(count!=0){
                 VideoCardDao videoCardDao = new VideoCardDao();
@@ -47,7 +49,7 @@ public class VideoCardServlet extends HttpServlet {
                 videoCardDao.select(videoCard);
                 try{Class.forName(DRIVER);
                     Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-                    PreparedStatement preparedStatement = connection.prepareStatement("UPDATE mainPlate set counts=? where id=?");
+                    PreparedStatement preparedStatement = connection.prepareStatement("UPDATE videocard set counts=? where id=?");
                     preparedStatement.setInt(1,videoCard.getCounts()-count);
                     preparedStatement.setInt(2,videoCard.getId());
                     preparedStatement.executeUpdate();
@@ -56,13 +58,13 @@ public class VideoCardServlet extends HttpServlet {
                     e.printStackTrace();
                 }
 
-                req.getRequestDispatcher("/WEB-INF/ComputerStore/Components/CreateComputer/ManePlate.jsp").forward(req,resp);
+                req.getRequestDispatcher("/WEB-INF/ComputerStore/Components/CreateComputer/VideoCard.jsp").forward(req,resp);
 
                 break;
             }
 
         }
-        req.getRequestDispatcher("/WEB-INF/ComputerStore/Components/CreateComputer/ManePlate.jsp").forward(req,resp);
+        req.getRequestDispatcher("/WEB-INF/ComputerStore/Components/CreateComputer/VideoCard.jsp").forward(req,resp);
 
     }
 }
