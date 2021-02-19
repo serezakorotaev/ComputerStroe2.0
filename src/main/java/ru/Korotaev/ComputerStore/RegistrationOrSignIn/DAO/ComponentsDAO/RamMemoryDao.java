@@ -7,13 +7,14 @@ import static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionDat
 
 public class RamMemoryDao {
     public void select(ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.RamMemory ramMemory) {
-        final String SELECT_QUERY = "Select * from rammemory";
+        final String SELECT_QUERY = "Select * from rammemory where id=?";
 
         try {
             Class.forName(DRIVER);
 
             Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUERY);
+            preparedStatement.setInt(1,ramMemory.getId());
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {

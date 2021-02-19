@@ -13,10 +13,13 @@
 </head>
 <body>
 Your cart:
-<% ShoppingCart shoppingCart = new ShoppingCart();
+<%int i=1;
+    while(i>0){
+        i++;
+    ShoppingCart shoppingCart = new ShoppingCart(1);
     ShoppingCartDao shoppingCartDao = new ShoppingCartDao();
 
-do{int i = 0;
+do{
     shoppingCartDao.select(shoppingCart);
 if (shoppingCart.getName()==null){
     break;
@@ -26,7 +29,7 @@ if (shoppingCart.getName()==null){
 </br>
 <%
 } while (shoppingCart.getName()==null);
-
+    }
 %>
 
 <form action="ShoppingCartServlet" method="POST">

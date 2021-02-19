@@ -8,14 +8,14 @@ import static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionDat
 import static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.PASSWORD;
 
 public class ShoppingCartDao {
-    final String SELECT_QUERY = "Select * from shoppingCart";
+    final String SELECT_QUERY = "Select * from shoppingCart where id=?";
         public void select(ShoppingCart shoppingCart){
         try {
         Class.forName(DRIVER);
 
         Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
         PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUERY);
-
+        preparedStatement.setInt(1,shoppingCart.getId());
         ResultSet resultSet = preparedStatement.executeQuery();
 
         if (resultSet.next()) {

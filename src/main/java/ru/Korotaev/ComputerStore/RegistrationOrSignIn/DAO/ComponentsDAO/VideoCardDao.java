@@ -7,13 +7,14 @@ import static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionDat
 
 public class VideoCardDao {
     public void select(ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.VideoCard videoCard) {
-        final String SELECT_QUERY = "Select * from videocard";
+        final String SELECT_QUERY = "Select * from videocard where  id=?";
 
         try {
             Class.forName(DRIVER);
 
             Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUERY);
+            preparedStatement.setInt(1,videoCard.getId());
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {

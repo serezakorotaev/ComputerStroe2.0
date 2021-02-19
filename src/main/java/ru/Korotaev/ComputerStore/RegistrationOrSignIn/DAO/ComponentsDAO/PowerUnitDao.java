@@ -9,13 +9,14 @@ import static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionDat
 
 public class PowerUnitDao {
     public void select(PowerUnit powerUnit) {
-        final String SELECT_QUERY = "Select * from powerunit";
+        final String SELECT_QUERY = "Select * from powerunit where id=?";
 
         try {
             Class.forName(DRIVER);
 
             Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUERY);
+            preparedStatement.setInt(1,powerUnit.getId());
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {

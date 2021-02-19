@@ -9,13 +9,14 @@ import static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionDat
 
 public class ProcessorDao {
     public void select(Processor processor) {
-        final String SELECT_QUERY = "Select * from processor";
+        final String SELECT_QUERY = "Select * from processor where id=?";
 
         try {
             Class.forName(DRIVER);
 
             Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUERY);
+            preparedStatement.setInt(1,processor.getId());
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
