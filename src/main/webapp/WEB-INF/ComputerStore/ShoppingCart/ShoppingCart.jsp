@@ -1,5 +1,11 @@
 <%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ModelShoppingCart.ShoppingCart" %>
-<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.ShoppingCartDao.ShoppingCartDao" %><%--
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.DRIVER" %>
+<%@ page import="static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.URL" %>
+<%@ page import="static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.*" %>
+<%@ page import="static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.PASSWORD" %>
+<%@ page import="java.sql.*" %><%--
   Created by IntelliJ IDEA.
   User: Mvideo
   Date: 17.02.2021
@@ -13,29 +19,41 @@
 </head>
 <body>
 Your cart:
-<%int i=1;
-    while(i>0){
-        i++;
-    ShoppingCart shoppingCart = new ShoppingCart(1);
-    ShoppingCartDao shoppingCartDao = new ShoppingCartDao();
-
-do{
-    shoppingCartDao.select(shoppingCart);
-if (shoppingCart.getName()==null){
-    break;
-}%>
 </br>
-<%=shoppingCart.getName() + " Цена: " + shoppingCart.getPrice() + "руб количество: " + shoppingCart.getCounts()%>
+<%  final String SELECT_QUERY = "Select * from shoppingCart";
+ShoppingCart shoppingCart = new ShoppingCart();
+    try{
+        Class.forName(DRIVER);
+        Connection connection = DriverManager.getConnection(URL,USER,PASSWORD);
+        PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUERY);
+
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while(resultSet.next()){
+            shoppingCart.setId(resultSet.getInt("id"));
+            shoppingCart.setName(resultSet.getString("name"));
+            shoppingCart.setPrice(resultSet.getInt("price"));
+            shoppingCart.setCounts(resultSet.getInt("counts"));
+            %>
+            <%= shoppingCart.toString()%>
+</br>
 </br>
 <%
-} while (shoppingCart.getName()==null);
+        }
+        }catch (ClassNotFoundException | SQLException e) {
+        e.printStackTrace();
     }
+
+
+
 %>
+
 
 <form action="ShoppingCartServlet" method="POST">
     Купить эти продукты
         <input type="submit" value="Buy"/>
 </form>
 <input type="button" onclick="history.back();" value="Назад"/>
+
 </body>
 </html>

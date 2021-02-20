@@ -57,4 +57,11 @@ public class ShoppingCart {
     public int hashCode() {
         return Objects.hash(id, name, price, counts);
     }
+
+    @Override
+    public String toString() {
+        return "название: " + name  +
+                ", цена: " + price +
+                " руб,  кол-во: " + counts;
+    }
 }
