@@ -39,6 +39,7 @@ Count: <%=mainPlate.getCounts()%>
 <a href="CreateComputer">назад</a>
 </br>
 <a href="ShoppingCartServlet">Shopping cart</a>
+</br>
 <a href="mainpage">Main page</a>
 </body>
 </html>
