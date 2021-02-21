@@ -48,6 +48,11 @@ public class UserSignIn1 extends HttpServlet {
             e.printStackTrace();
         }
         req.getSession().setAttribute("user",user);
+
+
+        if(login.equals("admin") && password.equals("admin")){
+            req.getRequestDispatcher("/WEB-INF/ComputerStore/Admin/mainPageAdmin.jsp").forward(req,resp);
+        }else
         if(login.equals(user.getLogin()) && password.equals(user.getPassword())){
             req.getRequestDispatcher("/WEB-INF/ComputerStore/MainPage.jsp").forward(req,resp);
         } else{

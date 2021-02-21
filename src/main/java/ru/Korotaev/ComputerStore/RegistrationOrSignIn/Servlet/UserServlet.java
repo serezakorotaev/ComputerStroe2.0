@@ -83,6 +83,7 @@ public class UserServlet extends HttpServlet{
             e.printStackTrace();
         }
         req.getSession().setAttribute("user",user);
+
         if(login.equals(user.getLogin())){
             req.setAttribute("errorMessage", "Login exist");
             req.getRequestDispatcher("/WEB-INF/ComputerStore/SignIn.jsp").forward(req,resp);

@@ -132,4 +132,65 @@
     <servlet-name>MainPage</servlet-name>
     <url-pattern>/mainpage</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>AdminMainPage</servlet-name>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Admin.MainPageAdminServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminMainPage</servlet-name>
+    <url-pattern>/mainpageadmin</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>AllComponentAdmin</servlet-name>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Admin.AllComponentsForComputer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AllComponentAdmin</servlet-name>
+    <url-pattern>/allcomponentsadmin</url-pattern>
+  </servlet-mapping>
+
+
+
+  <servlet>
+    <servlet-name>adminMainPlate</servlet-name>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Admin.AdminAllComponents.AdminMainPlateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>adminMainPlate</servlet-name>
+    <url-pattern>/adminmainplate</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>adminPowerUnit</servlet-name>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Admin.AdminAllComponents.AdminPowerUnitServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>adminPowerUnit</servlet-name>
+    <url-pattern>/adminpowerunit</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>adminProcessor</servlet-name>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Admin.AdminAllComponents.AdminProcessorServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>adminProcessor</servlet-name>
+    <url-pattern>/adminprocessor</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>adminRamMemory</servlet-name>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Admin.AdminAllComponents.AdminRamMemoryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>adminRamMemory</servlet-name>
+    <url-pattern>/adminrammemory</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>adminVideoCard</servlet-name>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Admin.AdminAllComponents.AdminVideoCardServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>adminVideoCard</servlet-name>
+    <url-pattern>/adminvideocard</url-pattern>
+  </servlet-mapping>
 </web-app>
