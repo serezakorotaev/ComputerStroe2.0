@@ -29,10 +29,13 @@
 Price: <%= mainPlate.getPrice()%>
 </br>
 Count: <%=mainPlate.getCounts()%>
+<% if(mainPlate.getCounts() == 0){ %>
+${message}
+<% } %>
 </br>
 
 <form action="adminmainplate" method="POST">
-    Введите кол-во, на которое изменить количество товара
+    Введите новое кол-во товара
     <p>
         <input type="text" name="count-<%=i%>"/>
         <input type="submit" value="Update"/>

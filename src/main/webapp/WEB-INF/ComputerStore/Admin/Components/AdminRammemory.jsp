@@ -28,11 +28,14 @@
 Price: <%= ramMemory.getPrice()%>
 </br>
 Count: <%=ramMemory.getCounts()%>
+<% if(ramMemory.getCounts() == 0){ %>
+${message}
+<% } %>
 </br>
 
 
 <form action="adminrammemory" method="POST">
-    Введите кол-во, на которое изменить количество товара
+    Введите новое кол-во товара
     <p>
         <input type="text" name="count-<%=i%>"/>
         <input type="submit" value="Update"/>

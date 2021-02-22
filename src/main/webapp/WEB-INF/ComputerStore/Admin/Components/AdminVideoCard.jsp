@@ -28,11 +28,14 @@
 Price: <%= videoCard.getPrice()%>
 </br>
 Count: <%=videoCard.getCounts()%>
+<% if(videoCard.getCounts() == 0){ %>
+${message}
+<% } %>
 </br>
 
 
 <form action="adminvideocard" method="POST">
-    Введите кол-во, на которое изменить количество товара
+    Введите новое кол-во товара
     <p>
         <input type="text" name="count-<%=i%>"/>
         <input type="submit" value="Update"/>

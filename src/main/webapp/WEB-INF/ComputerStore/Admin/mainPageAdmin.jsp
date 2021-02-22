@@ -17,7 +17,7 @@
 Welcome
 <%=user.getLogin()%> !
 <br/>
-You can to create your computer!
+You can to edit computer store.
 </br>
 <center><p>
     <a href="allcomponentsadmin">Склад</a>
