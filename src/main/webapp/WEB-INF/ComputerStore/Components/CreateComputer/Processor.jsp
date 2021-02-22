@@ -1,5 +1,6 @@
 <%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.ComponentsDAO.ProcessorDao" %>
-<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.Processor" %><%--
+<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.Processor" %>
+<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.CountInDB.CountProcessor" %><%--
   Created by IntelliJ IDEA.
   User: Mvideo
   Date: 15.02.2021
@@ -16,7 +17,9 @@ Processors:
 </br>
 <%
     ProcessorDao processorDao = new ProcessorDao();
-    for(int i=0;i<5;i++){
+    CountProcessor countProcessor = new CountProcessor();
+    int n = countProcessor.count();
+    for(int i=0;i<n;i++){
         Processor processor = new Processor(i);
         processorDao.select(processor);%>
 <%= processor.getName()%>

@@ -3,7 +3,8 @@
 <%@ page import="static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.URL" %>
 <%@ page import="static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.*" %>
 <%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.Processor" %>
-<%@ page import="java.sql.*" %><%--
+<%@ page import="java.sql.*" %>
+<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.CountInDB.CountProcessor" %><%--
   Created by IntelliJ IDEA.
   User: Mvideo
   Date: 21.02.2021
@@ -17,23 +18,8 @@
 </head>
 <body>
 <% ProcessorDao processorDao = new ProcessorDao();
-    final String SELECT_ALL="SELECT * from processor";
-    int n = 0;
-    try{
-        Class.forName(DRIVER);
-        Connection connection = DriverManager.getConnection(URL,USER,PASSWORD);
-        connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
-        connection.setAutoCommit(false);
-        PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL);
-
-        ResultSet resultSet = preparedStatement.executeQuery();
-
-        while(resultSet.next()){
-            n++;
-        }
-    } catch (ClassNotFoundException | SQLException e) {
-        e.printStackTrace();
-    }
+    CountProcessor countProcessor = new CountProcessor();
+    int n = countProcessor.count();
 
     for(int i =1; i<=n;i++){
         Processor processor = new Processor(i);
@@ -43,7 +29,7 @@ Price: <%= processor.getPrice()%>
 </br>
 Count: <%=processor.getCounts()%>
 </br>
-<% Integer s = i;%>
+
 
 <form action="adminprocessor" method="POST">
     Введите кол-во, на которое изменить количество товара

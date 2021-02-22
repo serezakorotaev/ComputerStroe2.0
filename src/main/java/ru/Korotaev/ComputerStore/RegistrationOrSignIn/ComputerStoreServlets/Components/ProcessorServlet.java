@@ -1,5 +1,6 @@
 package ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Components;
 
+import ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.CountInDB.CountProcessor;
 import ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.ComponentsDAO.ProcessorDao;
 
 import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.Processor;
@@ -24,7 +25,9 @@ public class ProcessorServlet extends HttpServlet {
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        for(int i=1;i<=5;i++){
+        CountProcessor countProcessor = new CountProcessor();
+        int n = countProcessor.count();
+        for(int i=0;i<n;i++){
             String stringCount = req.getParameter("count-"+i);
             if(stringCount==null)
                 continue;

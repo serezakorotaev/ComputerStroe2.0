@@ -1,5 +1,6 @@
 package ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Components;
 
+import ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.CountInDB.CountVideoCard;
 import ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.ComponentsDAO.VideoCardDao;
 import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.VideoCard;
 
@@ -24,7 +25,9 @@ public class VideoCardServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        for(int i=1;i<=5;i++){
+        CountVideoCard countVideoCard = new CountVideoCard();
+        int n = countVideoCard.count();
+        for(int i=0;i<n;i++){
             String stringCount = req.getParameter("count-"+i);
             if(stringCount==null)
                 continue;

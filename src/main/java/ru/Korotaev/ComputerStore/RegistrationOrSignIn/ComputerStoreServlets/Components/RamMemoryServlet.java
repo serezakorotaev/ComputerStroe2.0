@@ -1,5 +1,6 @@
 package ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Components;
 
+import ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.CountInDB.CountRamMemory;
 import ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.ComponentsDAO.MainPlateDao;
 import ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.ComponentsDAO.RamMemoryDao;
 import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.MainPlate;
@@ -25,7 +26,9 @@ public class RamMemoryServlet extends HttpServlet {
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        for(int i=1;i<=5;i++){
+        CountRamMemory countRamMemory = new CountRamMemory();
+        int n = countRamMemory.count();
+        for(int i=0;i<n;i++){
             String stringCount = req.getParameter("count-"+i);
             if(stringCount==null)
                 continue;

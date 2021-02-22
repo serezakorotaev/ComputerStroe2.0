@@ -1,5 +1,6 @@
 <%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.MainPlate" %>
-<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.ComponentsDAO.MainPlateDao" %><%--
+<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.ComponentsDAO.MainPlateDao" %>
+<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.CountInDB.CountMainPlate" %><%--
   Created by IntelliJ IDEA.
   User: Mvideo
   Date: 15.02.2021
@@ -16,7 +17,9 @@ Mane Plates:
 </br>
 <%
     MainPlateDao mainPlateDao = new MainPlateDao();
-    for(int i=1;i<=5;i++){
+    CountMainPlate countMainPlate = new CountMainPlate();
+    int n = countMainPlate.count();
+    for(int i=1;i<=n;i++){
         MainPlate mainPlate = new MainPlate(i);
         mainPlateDao.select(mainPlate);%>
         <%= mainPlate.getName()%>

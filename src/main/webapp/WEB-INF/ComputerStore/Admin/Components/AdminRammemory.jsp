@@ -3,7 +3,8 @@
 <%@ page import="static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.PASSWORD" %>
 <%@ page import="static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.*" %>
 <%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.RamMemory" %>
-<%@ page import="java.sql.*" %><%--
+<%@ page import="java.sql.*" %>
+<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.CountInDB.CountRamMemory" %><%--
   Created by IntelliJ IDEA.
   User: Mvideo
   Date: 21.02.2021
@@ -17,23 +18,8 @@
 </head>
 <body>
 <% RamMemoryDao ramMemoryDao = new RamMemoryDao();
-    final String SELECT_ALL="SELECT * from rammemory";
-    int n = 0;
-    try{
-        Class.forName(DRIVER);
-        Connection connection = DriverManager.getConnection(URL,USER,PASSWORD);
-        connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
-        connection.setAutoCommit(false);
-        PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL);
-
-        ResultSet resultSet = preparedStatement.executeQuery();
-
-        while(resultSet.next()){
-            n++;
-        }
-    } catch (ClassNotFoundException | SQLException e) {
-        e.printStackTrace();
-    }
+    CountRamMemory countRamMemory = new CountRamMemory();
+    int n = countRamMemory.count();
 
     for(int i =1; i<=n;i++){
         RamMemory ramMemory = new RamMemory(i);
@@ -43,7 +29,7 @@ Price: <%= ramMemory.getPrice()%>
 </br>
 Count: <%=ramMemory.getCounts()%>
 </br>
-<% Integer s = i;%>
+
 
 <form action="adminrammemory" method="POST">
     Введите кол-во, на которое изменить количество товара

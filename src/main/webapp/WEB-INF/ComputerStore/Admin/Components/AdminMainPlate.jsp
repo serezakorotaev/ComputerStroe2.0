@@ -4,7 +4,8 @@
 <%@ page import="static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.PASSWORD" %>
 <%@ page import="java.sql.*" %>
 <%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.MainPlate" %>
-<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.ComponentsDAO.MainPlateDao" %><%--
+<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.ComponentsDAO.MainPlateDao" %>
+<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.CountInDB.CountMainPlate" %><%--
   Created by IntelliJ IDEA.
   User: Mvideo
   Date: 21.02.2021
@@ -18,23 +19,8 @@
 </head>
 <body>
 <% MainPlateDao mainPlateDao = new MainPlateDao();
-    final String SELECT_ALL="SELECT * from mainplate";
-    int n = 0;
-    try{
-        Class.forName(DRIVER);
-        Connection connection = DriverManager.getConnection(URL,USER,PASSWORD);
-        connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
-        connection.setAutoCommit(false);
-        PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL);
-
-        ResultSet resultSet = preparedStatement.executeQuery();
-
-        while(resultSet.next()){
-            n++;
-        }
-    } catch (ClassNotFoundException | SQLException e) {
-        e.printStackTrace();
-    }
+    CountMainPlate countMainPlate = new CountMainPlate();
+    int n = countMainPlate.count();
 
     for(int i =1; i<=n;i++){
         ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.MainPlate mainPlate = new MainPlate(i);
@@ -44,7 +30,6 @@ Price: <%= mainPlate.getPrice()%>
 </br>
 Count: <%=mainPlate.getCounts()%>
 </br>
-<% Integer s = i;%>
 
 <form action="adminmainplate" method="POST">
     Введите кол-во, на которое изменить количество товара

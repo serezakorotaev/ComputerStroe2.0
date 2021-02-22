@@ -1,6 +1,7 @@
 package ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Components;
 
 
+import ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.CountInDB.CountPowerUnit;
 import ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.ComponentsDAO.PowerUnitDao;
 
 import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.PowerUnit;
@@ -25,7 +26,9 @@ public class PowerUnitServlet extends HttpServlet {
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        for(int i=1;i<=5;i++){
+        CountPowerUnit countPowerUnit = new CountPowerUnit();
+        int n = countPowerUnit.count();
+        for(int i=1;i<=n;i++){
             String stringCount = req.getParameter("count-"+i);
             if(stringCount==null)
                 continue;

@@ -27,6 +27,9 @@ You can to create your computer!
     </p><p>
     <a href="ShoppingCartServlet">Shopping cart</a>
     </p>
+    <p>
+        <a href="index.jsp">Выход</a>
+    </p>
 
 
 </center>

@@ -3,7 +3,8 @@
 <%@ page import="static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.PASSWORD" %>
 <%@ page import="static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.*" %>
 <%@ page import="java.sql.*" %>
-<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.VideoCard" %><%--
+<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.VideoCard" %>
+<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.CountInDB.CountVideoCard" %><%--
   Created by IntelliJ IDEA.
   User: Mvideo
   Date: 21.02.2021
@@ -17,23 +18,8 @@
 </head>
 <body>
 <% VideoCardDao videoCardDao = new VideoCardDao();
-    final String SELECT_ALL="SELECT * from videocard";
-    int n = 0;
-    try{
-        Class.forName(DRIVER);
-        Connection connection = DriverManager.getConnection(URL,USER,PASSWORD);
-        connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
-        connection.setAutoCommit(false);
-        PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL);
-
-        ResultSet resultSet = preparedStatement.executeQuery();
-
-        while(resultSet.next()){
-            n++;
-        }
-    } catch (ClassNotFoundException | SQLException e) {
-        e.printStackTrace();
-    }
+    CountVideoCard countVideoCard = new CountVideoCard();
+    int n = countVideoCard.count();
 
     for(int i =1; i<=n;i++){
         VideoCard videoCard = new VideoCard(i);
@@ -43,7 +29,7 @@ Price: <%= videoCard.getPrice()%>
 </br>
 Count: <%=videoCard.getCounts()%>
 </br>
-<% Integer s = i;%>
+
 
 <form action="adminvideocard" method="POST">
     Введите кол-во, на которое изменить количество товара

@@ -1,6 +1,7 @@
 package ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Components;
 
 
+import ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.CountInDB.CountMainPlate;
 import ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.ComponentsDAO.MainPlateDao;
 import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.MainPlate;
 
@@ -24,7 +25,9 @@ public class MainPlateServlet extends HttpServlet {
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-     for(int i=1;i<=5;i++){
+        CountMainPlate countMainPlate = new CountMainPlate();
+        int n = countMainPlate.count();
+        for(int i=1;i<=n;i++){
          String stringCount = req.getParameter("count-"+i);
          if(stringCount==null)
          continue;
