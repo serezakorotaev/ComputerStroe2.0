@@ -52,5 +52,7 @@ Video card:
     <input type="submit" value="Buy"/>
 </form>
 ${message}
+</br>
+<a href="ReadyMadeComputer">Назад</a>
 </body>
 </html>

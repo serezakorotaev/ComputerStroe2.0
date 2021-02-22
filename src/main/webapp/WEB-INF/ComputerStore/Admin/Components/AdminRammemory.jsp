@@ -42,5 +42,8 @@ ${message}
 </form>
 <%  }
 %>
+
+</br>
+<a href="allcomponentsadmin">Назад к компонентам</a>
 </body>
 </html>

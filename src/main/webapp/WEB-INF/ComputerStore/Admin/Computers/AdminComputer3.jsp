@@ -44,11 +44,16 @@ Video card:
 <%= computer.getVideocard()%>
 </br>
 Количество: <%=computer.getCount()%>
+<% if(computer.getCount() == 0){ %>
+${message}
+<% } %>
 <form action="admincomputer3" method="POST">
-    Введите кол-во, на которое изменить кол-во товара:
+    Введите новое кол-во товара:
     <p>
         <input type="text" name="count"/>
         <input type="submit" value="Update"/>
 </form>
+</br>
+<a href="adminallcomputers">Назад</a>
 </body>
 </html>

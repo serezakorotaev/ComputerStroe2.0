@@ -23,7 +23,7 @@ You can to edit computer store.
     <a href="allcomponentsadmin">Склад</a>
 </p>
     <p>
-        <a href="ReadyMadeComputer">Все готовые компьютеры</a>
+        <a href="adminallcomputers">Все готовые компьютеры</a>
     </p><p>
         <a href="index.jsp">Выход</a>
     </p>

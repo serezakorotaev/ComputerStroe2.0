@@ -23,6 +23,7 @@ Components:
 </br>
 <a href="adminvideocard">Videocard</a>
 </br>
-<input type="button" onclick="history.back();" value="Назад"/>
+</br>
+<a  href="mainpageadmin">На главную</a>
 </body>
 </html>

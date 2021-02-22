@@ -193,4 +193,38 @@
     <servlet-name>adminVideoCard</servlet-name>
     <url-pattern>/adminvideocard</url-pattern>
   </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>AdminAllComputers</servlet-name>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Admin.AdminComputers.AdminAllComputers</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminAllComputers</servlet-name>
+    <url-pattern>/adminallcomputers</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminComputer1</servlet-name>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Admin.AdminComputers.AdminComputer1</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminComputer1</servlet-name>
+    <url-pattern>/admincomputer1</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminComputer2</servlet-name>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Admin.AdminComputers.AdminComputer2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminComputer2</servlet-name>
+    <url-pattern>/admincomputer2</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminComputer3</servlet-name>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Admin.AdminComputers.AdminComputer3</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminComputer3</servlet-name>
+    <url-pattern>/admincomputer3</url-pattern>
+  </servlet-mapping>
 </web-app>

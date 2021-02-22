@@ -51,6 +51,7 @@ Video card:
         <input type="text" name="count"/>
         <input type="submit" value="Buy"/>
 </form>
+<a href="ReadyMadeComputer">Назад</a>
 ${message}
 </body>
 </html>

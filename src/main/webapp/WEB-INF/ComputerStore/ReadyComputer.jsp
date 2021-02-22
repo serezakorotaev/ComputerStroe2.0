@@ -20,6 +20,6 @@ Here we showing ready-made computers in our computer Store!
 <a href="Computer2">Computer 2</a>
 <a href="Computer3">Computer 3</a>
 </br>
-<input type="button" onclick="history.back();" value="Назад"/>
+<a href="mainpage">На главную</a>
 </body>
 </html>
