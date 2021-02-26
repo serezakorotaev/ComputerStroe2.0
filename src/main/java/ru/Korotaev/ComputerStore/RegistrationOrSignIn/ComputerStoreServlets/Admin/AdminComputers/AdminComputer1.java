@@ -40,18 +40,9 @@ if(count==0) {
     req.setAttribute("message", "Ожидайте поступление товара");
 }
         if(count>=0){
-            try {
-                Class.forName(DRIVER);
-                Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-                connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
-
-                PreparedStatement preparedStatement = connection.prepareStatement("Update madecomputers SET counts=? where id=1 ");
-                preparedStatement.setInt(1, count);
-                preparedStatement.executeUpdate();
+            computerDao.updateComputer(count,1);
                 req.getRequestDispatcher("/WEB-INF/ComputerStore/Admin/Computers/AdminComputer1.jsp").forward(req,resp);
-            } catch (ClassNotFoundException | SQLException e) {
-                e.printStackTrace();
-            }
+
         }
     }
 }

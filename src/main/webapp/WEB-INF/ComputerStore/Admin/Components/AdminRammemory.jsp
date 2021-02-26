@@ -4,7 +4,7 @@
 <%@ page import="static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.*" %>
 <%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.RamMemory" %>
 <%@ page import="java.sql.*" %>
-<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.CountInDB.CountRamMemory" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: Mvideo
   Date: 21.02.2021
@@ -18,8 +18,7 @@
 </head>
 <body>
 <% RamMemoryDao ramMemoryDao = new RamMemoryDao();
-    CountRamMemory countRamMemory = new CountRamMemory();
-    int n = countRamMemory.count();
+    int n = ramMemoryDao.countRamMemory();
 
     for(int i =1; i<=n;i++){
         RamMemory ramMemory = new RamMemory(i);

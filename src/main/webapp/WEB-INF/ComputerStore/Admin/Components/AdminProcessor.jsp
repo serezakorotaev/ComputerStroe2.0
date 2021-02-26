@@ -4,7 +4,7 @@
 <%@ page import="static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.*" %>
 <%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.Processor" %>
 <%@ page import="java.sql.*" %>
-<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.CountInDB.CountProcessor" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: Mvideo
   Date: 21.02.2021
@@ -18,8 +18,7 @@
 </head>
 <body>
 <% ProcessorDao processorDao = new ProcessorDao();
-    CountProcessor countProcessor = new CountProcessor();
-    int n = countProcessor.count();
+    int n = processorDao.countProcessor();
 
     for(int i =1; i<=n;i++){
         Processor processor = new Processor(i);

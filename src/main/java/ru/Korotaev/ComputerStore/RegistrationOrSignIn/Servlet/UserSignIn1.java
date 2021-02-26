@@ -31,7 +31,7 @@ public class UserSignIn1 extends HttpServlet {
             Class.forName(DRIVER);
             Connection connection = DriverManager.getConnection(URL,USER,PASSWORD);
             connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
-            connection.setAutoCommit(false);
+            connection.setAutoCommit(false);//создать дао с методами select по логину и паролю. просто по логину
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Users where login = ? and password=?");
             preparedStatement.setString(1,login);
             preparedStatement.setString(2,password);

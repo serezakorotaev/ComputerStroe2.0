@@ -35,18 +35,10 @@ public class AdminPowerUnitServlet extends HttpServlet {
             req.setAttribute("message","ожидайте поступление товара");
             if(count>=0){
                 PowerUnitDao powerUnitDao = new PowerUnitDao();
-                PowerUnit powerUnit = new PowerUnit(i);
-
-                powerUnitDao.select(powerUnit);
-                try{Class.forName(DRIVER);
-                    Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-                    PreparedStatement preparedStatement = connection.prepareStatement("UPDATE powerunit set counts=? where id=?");
-                    preparedStatement.setInt(1,count);
-                    preparedStatement.setInt(2,powerUnit.getId());
-                    preparedStatement.executeUpdate();
-
-                } catch (ClassNotFoundException | SQLException e) {
-                    e.printStackTrace();
+                PowerUnit powerUnit = new PowerUnit(i);//Смотреть в классы не админских сервлетов. реализовать все в одном дао для упрощения кода
+                {
+                    powerUnitDao.select(powerUnit);
+                    powerUnitDao.updateInPowerUnitQuantityCount(count, powerUnit.getId());
                 }
 
                 req.getRequestDispatcher("/WEB-INF/ComputerStore/Admin/Components/AdminPowerUnit.jsp").forward(req,resp);

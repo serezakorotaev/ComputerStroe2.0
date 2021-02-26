@@ -1,6 +1,6 @@
 <%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.ComponentsDAO.VideoCardDao" %>
 <%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.VideoCard" %>
-<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.CountInDB.CountVideoCard" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: Mvideo
   Date: 15.02.2021
@@ -17,8 +17,7 @@ Video cards:
 </br>
 <%
     VideoCardDao videoCardDao = new VideoCardDao();
-    CountVideoCard countVideoCard = new CountVideoCard();
-    int n = countVideoCard.count();
+    int n = videoCardDao.countVideoCard();
     for(int i=0;i<n;i++){
         VideoCard videoCard = new VideoCard(i);
         videoCardDao.select(videoCard);%>

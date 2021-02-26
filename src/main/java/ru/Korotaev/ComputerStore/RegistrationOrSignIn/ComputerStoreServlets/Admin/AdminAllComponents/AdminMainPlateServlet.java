@@ -35,17 +35,10 @@ public class AdminMainPlateServlet extends HttpServlet {
             req.setAttribute("message","ожидайте поступление товара");
             if(count>=0){
                 MainPlateDao mainPlateDao = new MainPlateDao();
-                MainPlate mainPlate = new MainPlate(i);
-                mainPlateDao.select(mainPlate);
-                try{Class.forName(DRIVER);
-                    Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-                    PreparedStatement preparedStatement = connection.prepareStatement("UPDATE mainPlate set counts=? where id=?");
-                    preparedStatement.setInt(1,count);
-                    preparedStatement.setInt(2,mainPlate.getId());
-                    preparedStatement.executeUpdate();
-
-                } catch (ClassNotFoundException | SQLException e) {
-                    e.printStackTrace();
+                MainPlate mainPlate = new MainPlate(i);//Смотреть в классы не админских сервлетов. реализовать все в одном дао для упрощения кода
+                {
+                    mainPlateDao.select(mainPlate);
+                    mainPlateDao.updateInMainPlateQuantityCount(count, mainPlate.getId());
                 }
 
                 req.getRequestDispatcher("/WEB-INF/ComputerStore/Admin/Components/AdminMainPlate.jsp").forward(req,resp);

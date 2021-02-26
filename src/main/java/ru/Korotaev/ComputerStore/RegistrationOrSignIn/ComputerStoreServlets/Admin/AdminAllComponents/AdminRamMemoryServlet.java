@@ -35,18 +35,12 @@ public class AdminRamMemoryServlet extends HttpServlet {
             req.setAttribute("message","ожидайте поступление товара");
             if(count>=0){
                 RamMemoryDao ramMemoryDao = new RamMemoryDao();
-                RamMemory ramMemory = new RamMemory(i);
-                ramMemoryDao.select(ramMemory);
+                RamMemory ramMemory = new RamMemory(i);//Смотреть в классы не админских сервлетов. реализовать все в одном дао для упрощения кода
 
-                try{Class.forName(DRIVER);
-                    Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-                    PreparedStatement preparedStatement = connection.prepareStatement("UPDATE rammemory set counts=? where id=?");
-                    preparedStatement.setInt(1,count);
-                    preparedStatement.setInt(2,ramMemory.getId());
-                    preparedStatement.executeUpdate();
 
-                } catch (ClassNotFoundException | SQLException e) {
-                    e.printStackTrace();
+                {
+                    ramMemoryDao.select(ramMemory);
+                    ramMemoryDao.updateInPowerUnitQuantityCount(count, ramMemory.getId());
                 }
 
                 req.getRequestDispatcher("/WEB-INF/ComputerStore/Admin/Components/AdminRammemory.jsp").forward(req,resp);

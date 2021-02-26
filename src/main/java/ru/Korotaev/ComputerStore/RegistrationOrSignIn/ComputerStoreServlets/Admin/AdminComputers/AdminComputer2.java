@@ -39,18 +39,9 @@ public class AdminComputer2 extends HttpServlet {
             req.setAttribute("message", "Ожидайте поступление товара");
         }
         if(count>=0){
-            try {
-                Class.forName(DRIVER);
-                Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-                connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
+            computerDao.updateComputer(count,2);
+            req.getRequestDispatcher("/WEB-INF/ComputerStore/Admin/Computers/AdminComputer2.jsp").forward(req,resp);
 
-                PreparedStatement preparedStatement = connection.prepareStatement("Update madecomputers SET counts=? where id=2 ");
-                preparedStatement.setInt(1, count);
-                preparedStatement.executeUpdate();
-                req.getRequestDispatcher("/WEB-INF/ComputerStore/Admin/Computers/AdminComputer2.jsp").forward(req,resp);
-            } catch (ClassNotFoundException | SQLException e) {
-                e.printStackTrace();
-            }
         }
     }
 }

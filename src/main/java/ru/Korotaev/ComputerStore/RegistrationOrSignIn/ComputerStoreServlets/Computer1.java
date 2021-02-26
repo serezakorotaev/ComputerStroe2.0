@@ -21,12 +21,13 @@ public class Computer1 extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-String strCount = req.getParameter("count");
-int count = Integer.parseInt(strCount);
+        String strCount = req.getParameter("count");
+        int count = Integer.parseInt(strCount);
 
 
-    Computer computer = new Computer(1);
+        Computer computer = new Computer(1);
         ComputerDao computerDao = new ComputerDao();
+
         try{
             Class.forName(DRIVER);
             computerDao.select(computer);
@@ -36,24 +37,19 @@ int count = Integer.parseInt(strCount);
 
         int newCount = computer.getCount() - count;
 
-    if(newCount<0){String message= "Столько товара нет в наличии";
-    req.setAttribute("message", message);
-        getServletContext().getRequestDispatcher("/WEB-INF/ComputerStore/Computers/Computer1.jsp").forward(req,resp);}
-    else {
-        try {
-            Class.forName(DRIVER);
-            Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-            connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
+        if(newCount<0){
 
-            PreparedStatement preparedStatement = connection.prepareStatement("Update madecomputers SET counts=? where id=1 ");
-            preparedStatement.setInt(1, newCount);
-            preparedStatement.executeUpdate();
+            String message= "Столько товара нет в наличии";
+            req.setAttribute("message", message);
+            getServletContext().getRequestDispatcher("/WEB-INF/ComputerStore/Computers/Computer1.jsp").forward(req,resp);}
+
+        else {
+
+            computerDao.updateComputer(newCount,1);
             req.getRequestDispatcher("/WEB-INF/ComputerStore/ThankYou/Thankyou.jsp").forward(req,resp);
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
+
         }
     }
-    }
-        }
+}
 
 

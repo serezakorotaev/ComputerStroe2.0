@@ -4,7 +4,7 @@
 <%@ page import="static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.*" %>
 <%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.PowerUnit" %>
 <%@ page import="java.sql.*" %>
-<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.CountInDB.CountPowerUnit" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: Mvideo
   Date: 21.02.2021
@@ -18,8 +18,7 @@
 </head>
 <body>
 <% PowerUnitDao powerUnitDao = new PowerUnitDao();
-    CountPowerUnit countPowerUnit = new CountPowerUnit();
-    int n = countPowerUnit.count();
+    int n = powerUnitDao.countPowerUnit();
 
     for(int i =1; i<=n;i++){
         PowerUnit powerUnit = new PowerUnit(i);

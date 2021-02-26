@@ -34,33 +34,19 @@ public class MainPlateServlet extends HttpServlet {
          int count = Integer.parseInt(stringCount);
          if(count!=0){
              MainPlateDao mainPlateDao = new MainPlateDao();
-             MainPlate mainPlate = new MainPlate(i);
-             mainPlateDao.select(mainPlate);
-             try {
-                 Class.forName(DRIVER);
-                 Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+             MainPlate mainPlate = new MainPlate(i);//в дао создать метод insert'а с элементами String name, int price,int count
+             int newCount = mainPlate.getCounts()-count;
 
-                 PreparedStatement preparedStatement = connection.prepareStatement("insert into shoppingCart (name,price,counts) values (?,?,?) ");
-                 preparedStatement.setString(1, mainPlate.getName());
-                 preparedStatement.setInt(2,mainPlate.getPrice());
-                 preparedStatement.setInt(3,count);
-                 preparedStatement.executeUpdate();//добавление в корзину
-             } catch (ClassNotFoundException | SQLException e) {
-                 e.printStackTrace();
+
+             {
+                 mainPlateDao.select(mainPlate);
+
+                 mainPlateDao.insertMainPlateIntoShoppingCart(mainPlate.getName(), mainPlate.getPrice(), count);
+
+                 mainPlateDao.select(mainPlate);//в дао добавить метод update'а , с элементами которые входять это int newCount and int id
+
+                 mainPlateDao.updateInMainPlateQuantityCount(newCount, mainPlate.getId());
              }
-
-             mainPlateDao.select(mainPlate);
-             try{Class.forName(DRIVER);
-                 Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-                 PreparedStatement preparedStatement = connection.prepareStatement("UPDATE mainPlate set counts=? where id=?");
-                 preparedStatement.setInt(1,mainPlate.getCounts()-count);
-                 preparedStatement.setInt(2,mainPlate.getId());
-                 preparedStatement.executeUpdate();
-
-             } catch (ClassNotFoundException | SQLException e) {
-                 e.printStackTrace();
-             }
-
              req.getRequestDispatcher("/WEB-INF/ComputerStore/Components/CreateComputer/ManePlate.jsp").forward(req,resp);
 
              break;

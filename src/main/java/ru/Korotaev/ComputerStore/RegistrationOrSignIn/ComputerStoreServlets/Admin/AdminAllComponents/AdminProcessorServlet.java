@@ -35,18 +35,10 @@ public class AdminProcessorServlet extends HttpServlet {
             req.setAttribute("message","ожидайте поступление товара");
             if(count>=0){
                 ProcessorDao processorDao = new ProcessorDao();
-                Processor processor = new Processor(i);
-
-                processorDao.select(processor);
-                try{Class.forName(DRIVER);
-                    Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-                    PreparedStatement preparedStatement = connection.prepareStatement("UPDATE processor set counts=? where id=?");
-                    preparedStatement.setInt(1,count);
-                    preparedStatement.setInt(2,processor.getId());
-                    preparedStatement.executeUpdate();
-
-                } catch (ClassNotFoundException | SQLException e) {
-                    e.printStackTrace();
+                Processor processor = new Processor(i);//Смотреть в классы не админских сервлетов. реализовать все в одном дао для упрощения кода
+                {
+                    processorDao.select(processor);
+                    processorDao.updateInPowerUnitQuantityCount(count, processor.getId());
                 }
 
                 req.getRequestDispatcher("/WEB-INF/ComputerStore/Admin/Components/AdminProcessor.jsp").forward(req,resp);

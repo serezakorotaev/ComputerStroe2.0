@@ -44,18 +44,9 @@ public class Computer2 extends HttpServlet {
             getServletContext().getRequestDispatcher("/WEB-INF/ComputerStore/Computers/Computer1.jsp").forward(req,resp);
         }
         else {
-            try {
-                Class.forName(DRIVER);
-                Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-                connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
+            computerDao.updateComputer(newCount,2);
+            req.getRequestDispatcher("/WEB-INF/ComputerStore/ThankYou/Thankyou.jsp").forward(req,resp);
 
-                PreparedStatement preparedStatement = connection.prepareStatement("Update madecomputers SET counts=? where id=2 ");
-                preparedStatement.setInt(1, newCount);
-                preparedStatement.executeUpdate();
-                req.getRequestDispatcher("/WEB-INF/ComputerStore/ThankYou/Thankyou.jsp").forward(req,resp);
-            } catch (ClassNotFoundException | SQLException e) {
-                e.printStackTrace();
-            }
         }
     }
     }

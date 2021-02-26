@@ -1,6 +1,6 @@
 <%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.ComponentsDAO.RamMemoryDao" %>
 <%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.RamMemory" %>
-<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.CountInDB.CountRamMemory" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: Mvideo
   Date: 15.02.2021
@@ -17,8 +17,7 @@ RAM memories:
 </br>
 <%
     RamMemoryDao ramMemoryDao = new RamMemoryDao();
-    CountRamMemory countRamMemory = new CountRamMemory();
-    int n = countRamMemory.count();
+    int n = ramMemoryDao.countRamMemory();
     for(int i=0;i<n;i++){
         RamMemory ramMemory = new RamMemory(i);
         ramMemoryDao.select(ramMemory);%>

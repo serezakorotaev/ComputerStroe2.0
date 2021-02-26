@@ -37,18 +37,12 @@ public class AdminVideoCardServlet extends HttpServlet {
 
             if(count>=0){
                 VideoCardDao videoCardDao = new VideoCardDao();
-                VideoCard videoCard = new VideoCard(i);
-                videoCardDao.select(videoCard);
+                VideoCard videoCard = new VideoCard(i);//Смотреть в классы не админских сервлетов. реализовать все в одном дао для упрощения кода
 
-                try{Class.forName(DRIVER);
-                    Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-                    PreparedStatement preparedStatement = connection.prepareStatement("UPDATE videocard set counts=? where id=?");
-                    preparedStatement.setInt(1,count);
-                    preparedStatement.setInt(2,videoCard.getId());
-                    preparedStatement.executeUpdate();
 
-                } catch (ClassNotFoundException | SQLException e) {
-                    e.printStackTrace();
+                {
+                    videoCardDao.select(videoCard);
+                    videoCardDao.updateInPowerUnitQuantityCount(count, videoCard.getId());
                 }
 
                 req.getRequestDispatcher("/WEB-INF/ComputerStore/Admin/Components/AdminVideoCard.jsp").forward(req,resp);

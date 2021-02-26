@@ -4,7 +4,7 @@
 <%@ page import="static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.*" %>
 <%@ page import="java.sql.*" %>
 <%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.VideoCard" %>
-<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.CountInDB.CountVideoCard" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: Mvideo
   Date: 21.02.2021
@@ -18,8 +18,7 @@
 </head>
 <body>
 <% VideoCardDao videoCardDao = new VideoCardDao();
-    CountVideoCard countVideoCard = new CountVideoCard();
-    int n = countVideoCard.count();
+    int n = videoCardDao.countVideoCard();
 
     for(int i =1; i<=n;i++){
         VideoCard videoCard = new VideoCard(i);

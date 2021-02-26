@@ -32,33 +32,16 @@ public class ProcessorServlet extends HttpServlet {
             if(stringCount==null)
                 continue;
             int count = Integer.parseInt(stringCount);
-            if(count!=0){
-               ProcessorDao processorDao = new ProcessorDao();
-                Processor processor = new Processor(i);
-                processorDao.select(processor);
-                try {
-                    Class.forName(DRIVER);
-                    Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+            if(count!=0) {
+                ProcessorDao processorDao = new ProcessorDao();
+                Processor processor = new Processor(i);//в дао создать метод insert'а с элементами String name, int price,int count
+                int newCount = processor.getCounts() - count;
 
-                    PreparedStatement preparedStatement = connection.prepareStatement("insert into shoppingCart (name,price,counts) values (?,?,?) ");
-                    preparedStatement.setString(1, processor.getName());
-                    preparedStatement.setInt(2,processor.getPrice());
-                    preparedStatement.setInt(3,count);
-                    preparedStatement.executeUpdate();//добавление в корзину
-                } catch (ClassNotFoundException | SQLException e) {
-                    e.printStackTrace();
-                }
-
-                processorDao.select(processor);
-                try{Class.forName(DRIVER);
-                    Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-                    PreparedStatement preparedStatement = connection.prepareStatement("UPDATE processor set counts=? where id=?");
-                    preparedStatement.setInt(1,processor.getCounts()-count);
-                    preparedStatement.setInt(2,processor.getId());
-                    preparedStatement.executeUpdate();
-
-                } catch (ClassNotFoundException | SQLException e) {
-                    e.printStackTrace();
+                {
+                    processorDao.select(processor);
+                    processorDao.insertPowerUnitIntoShoppingCart(processor.getName(), processor.getPrice(), count);
+                    processorDao.select(processor);//в дао добавить метод update'а , с элементами которые входять это int newCount and int id
+                    processorDao.updateInPowerUnitQuantityCount(newCount, processor.getId());
                 }
 
                 req.getRequestDispatcher("/WEB-INF/ComputerStore/Components/CreateComputer/Processor.jsp").forward(req,resp);

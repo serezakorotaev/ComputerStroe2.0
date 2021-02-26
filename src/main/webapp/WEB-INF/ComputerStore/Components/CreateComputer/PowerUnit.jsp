@@ -1,6 +1,6 @@
 <%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.ComponentsDAO.PowerUnitDao" %>
 <%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.PowerUnit" %>
-<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.CountInDB.CountPowerUnit" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: Mvideo
   Date: 15.02.2021
@@ -17,8 +17,7 @@ Power Units:
 </br>
 <%
     PowerUnitDao powerUnitDao = new PowerUnitDao();
-    CountPowerUnit countPowerUnit = new CountPowerUnit();
-    int n = countPowerUnit.count();
+    int n = powerUnitDao.countPowerUnit();
     for(int i=1;i<=n;i++){
         PowerUnit powerUnit = new PowerUnit(i);
         powerUnitDao.select(powerUnit);%>

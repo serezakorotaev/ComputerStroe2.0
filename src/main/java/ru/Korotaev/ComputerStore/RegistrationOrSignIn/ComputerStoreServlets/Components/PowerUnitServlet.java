@@ -35,31 +35,13 @@ public class PowerUnitServlet extends HttpServlet {
             int count = Integer.parseInt(stringCount);
             if(count!=0){
                 PowerUnitDao powerUnitDao = new PowerUnitDao();
-                PowerUnit powerUnit = new PowerUnit(i);
-                powerUnitDao.select(powerUnit);
-                try {
-                    Class.forName(DRIVER);
-                    Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-
-                    PreparedStatement preparedStatement = connection.prepareStatement("insert into shoppingCart (name,price,counts) values (?,?,?) ");
-                    preparedStatement.setString(1, powerUnit.getName());
-                    preparedStatement.setInt(2,powerUnit.getPrice());
-                    preparedStatement.setInt(3,count);
-                    preparedStatement.executeUpdate();//добавление в корзину
-                } catch (ClassNotFoundException | SQLException e) {
-                    e.printStackTrace();
-                }
-
-                powerUnitDao.select(powerUnit);
-                try{Class.forName(DRIVER);
-                    Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-                    PreparedStatement preparedStatement = connection.prepareStatement("UPDATE powerunit set counts=? where id=?");
-                    preparedStatement.setInt(1,powerUnit.getCounts()-count);
-                    preparedStatement.setInt(2,powerUnit.getId());
-                    preparedStatement.executeUpdate();
-
-                } catch (ClassNotFoundException | SQLException e) {
-                    e.printStackTrace();
+                PowerUnit powerUnit = new PowerUnit(i);//в дао создать метод insert'а с элементами String name, int price,int count
+                int newCount =powerUnit.getCounts()-count;
+                {
+                    powerUnitDao.select(powerUnit);
+                    powerUnitDao.insertPowerUnitIntoShoppingCart(powerUnit.getName(), powerUnit.getPrice(), count);
+                    powerUnitDao.select(powerUnit);//в дао добавить метод update'а , с элементами которые входять это int newCount and int id
+                    powerUnitDao.updateInPowerUnitQuantityCount(newCount, powerUnit.getId());
                 }
 
                 req.getRequestDispatcher("/WEB-INF/ComputerStore/Components/CreateComputer/PowerUnit.jsp").forward(req,resp);

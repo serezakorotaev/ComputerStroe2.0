@@ -35,31 +35,13 @@ public class RamMemoryServlet extends HttpServlet {
             int count = Integer.parseInt(stringCount);
             if(count!=0){
                 RamMemoryDao ramMemoryDao = new RamMemoryDao();
-               RamMemory ramMemory = new RamMemory(i);
-                ramMemoryDao.select(ramMemory);
-                try {
-                    Class.forName(DRIVER);
-                    Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-
-                    PreparedStatement preparedStatement = connection.prepareStatement("insert into shoppingCart (name,price,counts) values (?,?,?) ");
-                    preparedStatement.setString(1, ramMemory.getName());
-                    preparedStatement.setInt(2,ramMemory.getPrice());
-                    preparedStatement.setInt(3,count);
-                    preparedStatement.executeUpdate();//добавление в корзину
-                } catch (ClassNotFoundException | SQLException e) {
-                    e.printStackTrace();
-                }
-
-                ramMemoryDao.select(ramMemory);
-                try{Class.forName(DRIVER);
-                    Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-                    PreparedStatement preparedStatement = connection.prepareStatement("UPDATE rammemory set counts=? where id=?");
-                    preparedStatement.setInt(1,ramMemory.getCounts()-count);
-                    preparedStatement.setInt(2,ramMemory.getId());
-                    preparedStatement.executeUpdate();
-
-                } catch (ClassNotFoundException | SQLException e) {
-                    e.printStackTrace();
+               RamMemory ramMemory = new RamMemory(i);//в дао создать метод insert'а с элементами String name, int price,int count
+                int newCount =ramMemory.getCounts()-count;
+                {
+                    ramMemoryDao.select(ramMemory);
+                    ramMemoryDao.insertPowerUnitIntoShoppingCart(ramMemory.getName(), ramMemory.getPrice(), count);
+                    ramMemoryDao.select(ramMemory);//в дао добавить метод update'а , с элементами которые входять это int newCount and int id
+                    ramMemoryDao.updateInPowerUnitQuantityCount(newCount, ramMemory.getId());
                 }
 
                 req.getRequestDispatcher("/WEB-INF/ComputerStore/Components/CreateComputer/RamMemory.jsp").forward(req,resp);
