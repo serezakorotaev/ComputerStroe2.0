@@ -10,13 +10,31 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.*;
-
-import static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.*;
-import static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.PASSWORD;
-
+/***
+ * @version 15.0.01
+ * @autor Sergey Korotaev
+ *
+ * This class show first page with user's registration. He need to write new login and password for registration. After that he can
+ * buy different things in computer shop. If user has account yet he can tap on button 'sign in' and go over
+ * on next page with entrance where he write his login and password.
+ * If user is ADMIN then he is entrancing in admin pages where he might correct count all products on warehouse
+ *
+ * @see UserSignIn1
+ * @see ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.ReadyMadeComputer
+ * @see ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.MainPage
+ * @see ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Components.CreateComputer
+ * @see ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Admin.MainPageAdminServlet
+ *
+ */
 public class UserServlet extends HttpServlet{
-
+    /**
+     * @param req request
+     * @param resp response
+     * @throws ServletException include message that something that interfered with its normal operation
+     * @throws IOException include message that this page not found
+     * This method show first page with registration or If user has account yet he can tap on button 'sign in' and go over
+     * on next page with entrance where he write his login and password.
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setContentType("text/html");
@@ -50,44 +68,33 @@ public class UserServlet extends HttpServlet{
                 .append("</html>\r\n");
     }
 
+    /**
+     *
+     * @param req request
+     * @param resp response
+     * @throws ServletException include message that something that interfered with its normal operation
+     * @throws IOException include message that this page not found
+     * This there is check on user is database or no. If yes then send message about it and he entranced on signIn page
+     * @see UserSignIn1
+     * or result is no then user save in database.
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-      //регистрация
         User user = new User();
         UserDao userDao = new UserDao();
-//        try {
-//            Class.forName(DRIVER);
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//        }
+
 
         String login =req.getParameter("login");
         String password = req.getParameter("password");
 
-        try{
-            Class.forName(DRIVER);
-            Connection connection = DriverManager.getConnection(URL,USER,PASSWORD);
-            connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
-            connection.setAutoCommit(false);//создать дао с методами select по логину и паролю. просто по логину
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Users where login = ?");
-            preparedStatement.setString(1,login);
+        userDao.selectUserByLogin(user,login);
 
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            if(resultSet.next()){
-                user.setLogin(resultSet.getString("login"));
-            }
-
-            connection.close();
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        }
         req.getSession().setAttribute("user",user);
 
         if(login.equals(user.getLogin())){
             req.setAttribute("errorMessage", "Login exist");
             req.getRequestDispatcher("/WEB-INF/ComputerStore/SignIn.jsp").forward(req,resp);
-//            req.getRequestDispatcher("/index.jsp").forward(req,resp);
+
         } else{
             user.setLogin(login);
             user.setPassword(password);

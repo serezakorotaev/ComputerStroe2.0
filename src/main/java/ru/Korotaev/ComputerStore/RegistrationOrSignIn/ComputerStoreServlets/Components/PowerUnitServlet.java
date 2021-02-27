@@ -1,7 +1,6 @@
 package ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Components;
 
 
-import ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.CountInDB.CountPowerUnit;
 import ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.ComponentsDAO.PowerUnitDao;
 
 import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.PowerUnit;
@@ -11,36 +10,54 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-
-import static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.*;
-import static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.PASSWORD;
-
+/***
+ * This class implements page with list different power unit. User can get different count power unit.
+ * doGet method forwarded on the jsp pages with list power units.
+ * doPost method implements different operation with power unit counts in database. After connection
+ * count update in powerunit database and value insert in shoppingcart database.
+ *
+ * @version 15.0.01
+ * @autor Sergey Korotaev
+ */
 public class PowerUnitServlet extends HttpServlet {
+    /**
+     * @param req request
+     * @param resp response
+     * @throws ServletException include message that something that interfered with its normal operation
+     * @throws IOException include message that this page not found
+     * This method forwarded on the jsp pages with list power units.
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         getServletContext().getRequestDispatcher("/WEB-INF/ComputerStore/Components/CreateComputer/PowerUnit.jsp").forward(req,resp);
     }
+
+    /**
+     * @param req request
+     * @param resp response
+     * @throws ServletException include message that something that interfered with its normal operation
+     * @throws IOException include message that this page not found
+     * This method implements different operation with power unit counts in database. After connection
+     * count update in powerunit database and value insert in shoppingcart database.
+     * @see PowerUnit
+     * @see PowerUnitDao
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        CountPowerUnit countPowerUnit = new CountPowerUnit();
-        int n = countPowerUnit.count();
+        PowerUnitDao powerUnitDao = new PowerUnitDao();
+        int n = powerUnitDao.countPowerUnit();
         for(int i=1;i<=n;i++){
             String stringCount = req.getParameter("count-"+i);
             if(stringCount==null)
                 continue;
             int count = Integer.parseInt(stringCount);
             if(count!=0){
-                PowerUnitDao powerUnitDao = new PowerUnitDao();
-                PowerUnit powerUnit = new PowerUnit(i);//в дао создать метод insert'а с элементами String name, int price,int count
+                PowerUnit powerUnit = new PowerUnit(i);
                 int newCount =powerUnit.getCounts()-count;
                 {
                     powerUnitDao.select(powerUnit);
                     powerUnitDao.insertPowerUnitIntoShoppingCart(powerUnit.getName(), powerUnit.getPrice(), count);
-                    powerUnitDao.select(powerUnit);//в дао добавить метод update'а , с элементами которые входять это int newCount and int id
+                    powerUnitDao.select(powerUnit);
                     powerUnitDao.updateInPowerUnitQuantityCount(newCount, powerUnit.getId());
                 }
 

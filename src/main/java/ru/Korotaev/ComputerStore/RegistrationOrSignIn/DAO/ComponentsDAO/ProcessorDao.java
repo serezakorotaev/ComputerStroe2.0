@@ -6,8 +6,21 @@ import java.sql.*;
 
 import static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.*;
 import static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.PASSWORD;
-
+/***
+ * This DAO class with method for connection and actions with processor Database. It is
+ * select all information about processor which has specified value id, insert processor into shoppingCart with
+ * specified value count,update in processor quantity count on quantity value count and found counts how mane different processor
+ * on the warehouse.
+ * @version 15.0.01
+ * @autor Sergey Korotaev
+ */
 public class ProcessorDao {
+    /**
+     *
+     * @param processor is processor object with specified id by which found name,
+     *                  price and count it is processor.
+     * @see Processor
+     */
     public void select(Processor processor) {
         final String SELECT_QUERY = "Select * from processor where id=?";
 
@@ -29,6 +42,14 @@ public class ProcessorDao {
             e.printStackTrace();
         }
     }
+
+    /**
+     *
+     * @param name by specified processor which user choose
+     * @param price by specified processor
+     * @param count by specified processor
+     * @see Processor
+     */
     public void insertPowerUnitIntoShoppingCart(String name,int price,int count){
         try {
             Class.forName(DRIVER);
@@ -38,12 +59,18 @@ public class ProcessorDao {
             preparedStatement.setString(1, name);
             preparedStatement.setInt(2,price);
             preparedStatement.setInt(3,count);
-            preparedStatement.executeUpdate();//добавление в корзину
+            preparedStatement.executeUpdate();
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     *
+     * @param count is value by which update count in warehouse about processor
+     * @param id specified indicator processor
+     * @see Processor
+     */
     public void updateInPowerUnitQuantityCount(int count,int id){
         try{Class.forName(DRIVER);
             Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
@@ -56,6 +83,11 @@ public class ProcessorDao {
             e.printStackTrace();
         }
     }
+
+    /**
+     *
+     * @return count lines from processor Database
+     */
     public int countProcessor(){
         final String SELECT_ALL="SELECT * from processor";
 

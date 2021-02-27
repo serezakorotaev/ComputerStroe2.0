@@ -6,8 +6,21 @@ import java.sql.*;
 
 import static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.*;
 import static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.PASSWORD;
-
+/***
+ * This DAO class with method for connection and actions with powerunit Database. It is
+ * select all information about power unit which has specified value id, insert power unit into shoppingCart with
+ * specified value count,update in power unit quantity count on quantity value count and found counts how mane different power unit
+ * on the warehouse.
+ * @version 15.0.01
+ * @autor Sergey Korotaev
+ */
 public class PowerUnitDao {
+    /**
+     *
+     * @param powerUnit is power unit object with specified id by which found name,
+     *                  price and count it is power unit.
+     * @see PowerUnit
+     */
     public void select(PowerUnit powerUnit) {
         final String SELECT_QUERY = "Select * from powerunit where id=?";
 
@@ -29,6 +42,14 @@ public class PowerUnitDao {
             e.printStackTrace();
         }
     }
+
+    /**
+     *
+     * @param name by specified power unit which user choose
+     * @param price by specified power unit
+     * @param count by specified power unit
+     * @see PowerUnit
+     */
     public void insertPowerUnitIntoShoppingCart(String name,int price,int count){
         try {
             Class.forName(DRIVER);
@@ -38,12 +59,18 @@ public class PowerUnitDao {
             preparedStatement.setString(1, name);
             preparedStatement.setInt(2,price);
             preparedStatement.setInt(3,count);
-            preparedStatement.executeUpdate();//добавление в корзину
+            preparedStatement.executeUpdate();
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     *
+     * @param count is value by which update count in warehouse about power unit
+     * @param id specified indicator power unit
+     * @see PowerUnit
+     */
     public void updateInPowerUnitQuantityCount(int count,int id){
         try{Class.forName(DRIVER);
             Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
@@ -57,6 +84,10 @@ public class PowerUnitDao {
         }
     }
 
+    /**
+     *
+     * @return count lines from powerunit Database
+     */
     public int countPowerUnit(){
         final String SELECT_ALL="SELECT * from powerunit";
 

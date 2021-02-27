@@ -6,9 +6,21 @@ import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.MainP
 import java.sql.*;
 
 import static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.*;
-
+/***
+ * This DAO class with method for connection and actions with mainplate Database. It is
+ * select all information about main plate which has specified value id, insert main plate into shoppingCart with
+ * specified value count,update in main plate quantity count on quantity value count and found counts how mane different plate
+ * on the warehouse.
+ * @version 15.0.01
+ * @autor Sergey Korotaev
+ */
 public class MainPlateDao {
-
+    /**
+     *
+     * @param manePlate is mane plate object with specified id by which found name,
+     *                  price and count it is main plate.
+     * @see MainPlate
+     */
     public void select(MainPlate manePlate) {
         final String SELECT_QUERY = "Select * from mainplate where id=?";
 
@@ -31,6 +43,13 @@ public class MainPlateDao {
         }
     }
 
+    /**
+     *
+     * @param name by specified main plate which user choose
+     * @param price by specified main plate
+     * @param count by specified main plate
+     * @see MainPlate
+     */
     public void insertMainPlateIntoShoppingCart(String name,int price,int count){
         try {
             Class.forName(DRIVER);
@@ -40,12 +59,18 @@ public class MainPlateDao {
             preparedStatement.setString(1, name);
             preparedStatement.setInt(2,price);
             preparedStatement.setInt(3,count);
-            preparedStatement.executeUpdate();//добавление в корзину
+            preparedStatement.executeUpdate();
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     *
+     * @param count is value by which update count in warehouse about main plate
+     * @param id specified indicator main plate
+     * @see MainPlate
+     */
     public void updateInMainPlateQuantityCount(int count,int id){
         try{Class.forName(DRIVER);
             Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
@@ -59,6 +84,10 @@ public class MainPlateDao {
         }
     }
 
+    /**
+     *
+     * @return count lines from mainplate Database
+     */
     public int countMainPlate(){
         final String SELECT_ALL="SELECT * from mainplate";
 

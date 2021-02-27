@@ -1,7 +1,6 @@
 package ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Components;
 
 
-import ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.CountInDB.CountMainPlate;
 import ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.ComponentsDAO.MainPlateDao;
 import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.MainPlate;
 
@@ -10,31 +9,50 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
-import static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.*;
-
-
+/***
+ * This class implements page with list different main plate. User can get different count main plates.
+ * doGet method forwarded on the jsp pages with list main plates.
+ * doPost method implements different operation with main plate counts in database. after connection
+ * count update in mainplate database and value insert in shoppingcart database.
+ *
+ * @version 15.0.01
+ * @autor Sergey Korotaev
+ */
 public class MainPlateServlet extends HttpServlet {
+    /**
+     * @param req request
+     * @param resp response
+     * @throws ServletException include message that something that interfered with its normal operation
+     * @throws IOException include message that this page not found
+     * This method forwarded on the jsp pages with list main plates.
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         getServletContext().getRequestDispatcher("/WEB-INF/ComputerStore/Components/CreateComputer/ManePlate.jsp").forward(req,resp);
     }
+
+    /**
+     * @param req request
+     * @param resp response
+     * @throws ServletException include message that something that interfered with its normal operation
+     * @throws IOException include message that this page not found
+     * This method implements different operation with main plate counts in database. after connection
+     * count update in mainplate database and value insert in shoppingcart database.
+     * @see MainPlate
+     * @see MainPlateDao
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        CountMainPlate countMainPlate = new CountMainPlate();
-        int n = countMainPlate.count();
+        MainPlateDao mainPlateDao = new MainPlateDao();
+        int n = mainPlateDao.countMainPlate();
         for(int i=1;i<=n;i++){
          String stringCount = req.getParameter("count-"+i);
          if(stringCount==null)
          continue;
          int count = Integer.parseInt(stringCount);
          if(count!=0){
-             MainPlateDao mainPlateDao = new MainPlateDao();
-             MainPlate mainPlate = new MainPlate(i);//в дао создать метод insert'а с элементами String name, int price,int count
+             MainPlate mainPlate = new MainPlate(i);
              int newCount = mainPlate.getCounts()-count;
 
 
@@ -43,7 +61,7 @@ public class MainPlateServlet extends HttpServlet {
 
                  mainPlateDao.insertMainPlateIntoShoppingCart(mainPlate.getName(), mainPlate.getPrice(), count);
 
-                 mainPlateDao.select(mainPlate);//в дао добавить метод update'а , с элементами которые входять это int newCount and int id
+                 mainPlateDao.select(mainPlate);
 
                  mainPlateDao.updateInMainPlateQuantityCount(newCount, mainPlate.getId());
              }
