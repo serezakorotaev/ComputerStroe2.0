@@ -1,6 +1,5 @@
 package ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Admin.AdminAllComponents;
 
-import ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.CountInDB.CountVideoCard;
 import ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.ComponentsDAO.VideoCardDao;
 import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.VideoCard;
 
@@ -9,13 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
-import static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.*;
-import static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.PASSWORD;
 
 public class AdminVideoCardServlet extends HttpServlet {
     @Override
@@ -25,8 +18,9 @@ public class AdminVideoCardServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        CountVideoCard countVideoCard = new CountVideoCard();
-        int n = countVideoCard.count();
+
+        VideoCardDao videoCardDao = new VideoCardDao();
+        int n = videoCardDao.countVideoCard();
         for(int i=0;i<n;i++){
             String stringCount = req.getParameter("count-"+i);
             if(stringCount==null)
@@ -36,7 +30,6 @@ public class AdminVideoCardServlet extends HttpServlet {
             req.setAttribute("message","ожидайте поступление товара");
 
             if(count>=0){
-                VideoCardDao videoCardDao = new VideoCardDao();
                 VideoCard videoCard = new VideoCard(i);//Смотреть в классы не админских сервлетов. реализовать все в одном дао для упрощения кода
 
 
