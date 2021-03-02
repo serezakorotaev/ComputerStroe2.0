@@ -21,57 +21,52 @@ import java.io.IOException;
  */
 public class MainPlateServlet extends HttpServlet {
     /**
-     * @param req request
-     * @param resp response
-     * @throws ServletException include message that something that interfered with its normal operation
-     * @throws IOException include message that this page not found
      * This method forwarded on the jsp pages with list main plates.
+     *
+     * @param req  - request
+     * @param resp - response
+     * @throws ServletException - include message that something that interfered with its normal operation
+     * @throws IOException      - include message that this page not found
      */
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/WEB-INF/ComputerStore/Components/CreateComputer/ManePlate.jsp").forward(req,resp);
+    protected void doGet(HttpServletRequest req , HttpServletResponse resp) throws ServletException, IOException {
+        getServletContext().getRequestDispatcher("/WEB-INF/ComputerStore/Components/CreateComputer/ManePlate.jsp").forward(req , resp);
     }
 
     /**
-     * @param req request
-     * @param resp response
-     * @throws ServletException include message that something that interfered with its normal operation
-     * @throws IOException include message that this page not found
      * This method implements different operation with main plate counts in database. after connection
      * count update in mainplate database and value insert in shoppingcart database.
+     *
+     * @param req  - request
+     * @param resp - response
+     * @throws ServletException - include message that something that interfered with its normal operation
+     * @throws IOException      - include message that this page not found
      * @see MainPlate
      * @see MainPlateDao
      */
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req , HttpServletResponse resp) throws ServletException, IOException {
         MainPlateDao mainPlateDao = new MainPlateDao();
         int n = mainPlateDao.countMainPlate();
-        for(int i=1;i<=n;i++){
-         String stringCount = req.getParameter("count-"+i);
-         if(stringCount==null)
-         continue;
-         int count = Integer.parseInt(stringCount);
-         if(count!=0){
-             MainPlate mainPlate = new MainPlate(i);
-             int newCount = mainPlate.getCounts()-count;
-
-
-             {
-                 mainPlateDao.select(mainPlate);
-
-                 mainPlateDao.insertMainPlateIntoShoppingCart(mainPlate.getName(), mainPlate.getPrice(), count);
-
-                 mainPlateDao.select(mainPlate);
-
-                 mainPlateDao.updateInMainPlateQuantityCount(newCount, mainPlate.getId());
-             }
-             req.getRequestDispatcher("/WEB-INF/ComputerStore/Components/CreateComputer/ManePlate.jsp").forward(req,resp);
-
-             break;
-         }
-
-     }
-        req.getRequestDispatcher("/WEB-INF/ComputerStore/Components/CreateComputer/ManePlate.jsp").forward(req,resp);
-
+        for (int i = 1; i <= n; i++) {
+            String stringCount = req.getParameter("count-" + i);
+            if (stringCount == null) {
+                continue;
+            }
+            int count = Integer.parseInt(stringCount);
+            if (count != 0) {
+                MainPlate mainPlate = new MainPlate(i);
+                int newCount = mainPlate.getCounts() - count;
+                {
+                    mainPlateDao.select(mainPlate);
+                    mainPlateDao.insertMainPlateIntoShoppingCart(mainPlate.getName() , mainPlate.getPrice() , count);
+                    mainPlateDao.select(mainPlate);
+                    mainPlateDao.updateInMainPlateQuantityCount(newCount , mainPlate.getId());
+                }
+                req.getRequestDispatcher("/WEB-INF/ComputerStore/Components/CreateComputer/ManePlate.jsp").forward(req , resp);
+                break;
+            }
+        }
+        req.getRequestDispatcher("/WEB-INF/ComputerStore/Components/CreateComputer/ManePlate.jsp").forward(req , resp);
     }
-    }
+}
