@@ -1,6 +1,6 @@
-<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.Computer" %>
-<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.Dao.ComputerDao" %>
-<%@ page import="static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.DRIVER" %><%--
+<%@ page import="ru.Korotaev.ComputerStore.RegistrationorsignIn.Model.Computer" %>
+<%@ page import="ru.Korotaev.ComputerStore.RegistrationorsignIn.Dao.ComputerDao" %>
+<%@ page import="static ru.Korotaev.ComputerStore.RegistrationorsignIn.Model.ConnectionData.DRIVER" %><%--
   Created by IntelliJ IDEA.
   User: Mvideo
   Date: 09.02.2021

@@ -1,5 +1,5 @@
-<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.Dao.ComponentsDAO.RamMemoryDao" %>
-<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.RamMemory" %>
+<%@ page import="ru.Korotaev.ComputerStore.RegistrationorsignIn.Dao.Componentsdao.RamMemoryDao" %>
+<%@ page import="ru.Korotaev.ComputerStore.RegistrationorsignIn.Model.Componentmodel.RamMemory" %>
 <%--
   Created by IntelliJ IDEA.
   User: Mvideo

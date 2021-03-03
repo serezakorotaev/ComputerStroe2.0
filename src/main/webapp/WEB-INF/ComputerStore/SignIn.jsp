@@ -1,4 +1,4 @@
-<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.Servlet.UserSignIn1" %>
+<%@ page import="ru.Korotaev.ComputerStore.RegistrationorsignIn.Servlet.UserSignIn1" %>
 <%--
   Created by IntelliJ IDEA.
   User: Mvideo

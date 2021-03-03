@@ -8,7 +8,7 @@
   <display-name>Archetype Created Web Application</display-name>
 <servlet>
   <servlet-name>UserServlet</servlet-name>
-  <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.Servlet.UserServlet</servlet-class>
+  <servlet-class>ru.Korotaev.ComputerStore.RegistrationorsignIn.Servlet.UserServlet</servlet-class>
   <load-on-startup>1</load-on-startup>
 </servlet>
   <servlet-mapping>
@@ -18,7 +18,7 @@
 
   <servlet>
     <servlet-name>UserSignIn1</servlet-name>
-    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.Servlet.UserSignIn1</servlet-class>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationorsignIn.Servlet.UserSignIn1</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>UserSignIn1</servlet-name>
@@ -27,7 +27,7 @@
   
   <servlet>
     <servlet-name>ReadyMadeComputer</servlet-name>
-    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.ReadyMadeComputer</servlet-class>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationorsignIn.Computerstoreservlets.ReadyMadeComputer</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ReadyMadeComputer</servlet-name>
@@ -36,7 +36,7 @@
   
   <servlet>
     <servlet-name>Computer1</servlet-name>
-    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Computer1</servlet-class>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationorsignIn.Computerstoreservlets.Computer1</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Computer1</servlet-name>
@@ -45,7 +45,7 @@
   
   <servlet>
     <servlet-name>Computer2</servlet-name>
-    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Computer2</servlet-class>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationorsignIn.Computerstoreservlets.Computer2</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Computer2</servlet-name>
@@ -54,7 +54,7 @@
   
   <servlet>
     <servlet-name>Computer3</servlet-name>
-    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Computer3</servlet-class>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationorsignIn.Computerstoreservlets.Computer3</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Computer3</servlet-name>
@@ -63,7 +63,7 @@
 
   <servlet>
     <servlet-name>CreateComputer</servlet-name>
-    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Components.CreateComputer</servlet-class>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationorsignIn.Computerstoreservlets.Components.CreateComputer</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>CreateComputer</servlet-name>
@@ -73,7 +73,7 @@
   
   <servlet>
     <servlet-name>ManePlate</servlet-name>
-    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Components.MainPlateServlet</servlet-class>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationorsignIn.Computerstoreservlets.Components.MainPlateServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ManePlate</servlet-name>
@@ -82,7 +82,7 @@
   
   <servlet>
     <servlet-name>PowerUnit</servlet-name>
-    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Components.PowerUnitServlet</servlet-class>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationorsignIn.Computerstoreservlets.Components.PowerUnitServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>PowerUnit</servlet-name>
@@ -91,7 +91,7 @@
   
   <servlet>
     <servlet-name>Processor</servlet-name>
-    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Components.ProcessorServlet</servlet-class>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationorsignIn.Computerstoreservlets.Components.ProcessorServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Processor</servlet-name>
@@ -100,7 +100,7 @@
   
   <servlet>
     <servlet-name>RamMemory</servlet-name>
-    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Components.RamMemoryServlet</servlet-class>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationorsignIn.Computerstoreservlets.Components.RamMemoryServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>RamMemory</servlet-name>
@@ -109,7 +109,7 @@
   
   <servlet>
     <servlet-name>VideoCard</servlet-name>
-    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Components.VideoCardServlet</servlet-class>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationorsignIn.Computerstoreservlets.Components.VideoCardServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>VideoCard</servlet-name>
@@ -118,7 +118,7 @@
   
   <servlet>
     <servlet-name>ShoppingCart</servlet-name>
-    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.ShoppingCartServlet.ShoppingCartServlet</servlet-class>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationorsignIn.Computerstoreservlets.Shoppingcartservlet.ShoppingCartServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ShoppingCart</servlet-name>
@@ -126,7 +126,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>MainPage</servlet-name>
-    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.MainPage</servlet-class>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationorsignIn.Computerstoreservlets.MainPage</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>MainPage</servlet-name>
@@ -135,7 +135,7 @@
   
   <servlet>
     <servlet-name>AdminMainPage</servlet-name>
-    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Admin.MainPageAdminServlet</servlet-class>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationorsignIn.Computerstoreservlets.Admin.MainPageAdminServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AdminMainPage</servlet-name>
@@ -144,7 +144,7 @@
 
   <servlet>
     <servlet-name>AllComponentAdmin</servlet-name>
-    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Admin.AllComponentsForComputer</servlet-class>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationorsignIn.Computerstoreservlets.Admin.AllComponentsForComputer</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AllComponentAdmin</servlet-name>
@@ -155,7 +155,7 @@
 
   <servlet>
     <servlet-name>adminMainPlate</servlet-name>
-    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Admin.AdminAllComponents.AdminMainPlateServlet</servlet-class>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationorsignIn.Computerstoreservlets.Admin.Adminallcomponents.AdminMainPlateServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>adminMainPlate</servlet-name>
@@ -163,7 +163,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>adminPowerUnit</servlet-name>
-    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Admin.AdminAllComponents.AdminPowerUnitServlet</servlet-class>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationorsignIn.Computerstoreservlets.Admin.Adminallcomponents.AdminPowerUnitServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>adminPowerUnit</servlet-name>
@@ -171,7 +171,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>adminProcessor</servlet-name>
-    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Admin.AdminAllComponents.AdminProcessorServlet</servlet-class>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationorsignIn.Computerstoreservlets.Admin.Adminallcomponents.AdminProcessorServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>adminProcessor</servlet-name>
@@ -179,7 +179,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>adminRamMemory</servlet-name>
-    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Admin.AdminAllComponents.AdminRamMemoryServlet</servlet-class>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationorsignIn.Computerstoreservlets.Admin.Adminallcomponents.AdminRamMemoryServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>adminRamMemory</servlet-name>
@@ -187,7 +187,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>adminVideoCard</servlet-name>
-    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Admin.AdminAllComponents.AdminVideoCardServlet</servlet-class>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationorsignIn.Computerstoreservlets.Admin.Adminallcomponents.AdminVideoCardServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>adminVideoCard</servlet-name>
@@ -197,7 +197,7 @@
   
   <servlet>
     <servlet-name>AdminAllComputers</servlet-name>
-    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Admin.AdminComputers.AdminAllComputers</servlet-class>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationorsignIn.Computerstoreservlets.Admin.Admincomputers.AdminAllComputers</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AdminAllComputers</servlet-name>
@@ -205,7 +205,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>AdminComputer1</servlet-name>
-    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Admin.AdminComputers.AdminComputer1</servlet-class>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationorsignIn.Computerstoreservlets.Admin.Admincomputers.AdminComputer1</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AdminComputer1</servlet-name>
@@ -213,7 +213,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>AdminComputer2</servlet-name>
-    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Admin.AdminComputers.AdminComputer2</servlet-class>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationorsignIn.Computerstoreservlets.Admin.Admincomputers.AdminComputer2</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AdminComputer2</servlet-name>
@@ -221,7 +221,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>AdminComputer3</servlet-name>
-    <servlet-class>ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Admin.AdminComputers.AdminComputer3</servlet-class>
+    <servlet-class>ru.Korotaev.ComputerStore.RegistrationorsignIn.Computerstoreservlets.Admin.Admincomputers.AdminComputer3</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AdminComputer3</servlet-name>

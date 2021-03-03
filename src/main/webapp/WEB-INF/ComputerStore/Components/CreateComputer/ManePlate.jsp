@@ -1,5 +1,5 @@
-<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.MainPlate" %>
-<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.Dao.ComponentsDAO.MainPlateDao" %>
+<%@ page import="ru.Korotaev.ComputerStore.RegistrationorsignIn.Model.Componentmodel.MainPlate" %>
+<%@ page import="ru.Korotaev.ComputerStore.RegistrationorsignIn.Dao.Componentsdao.MainPlateDao" %>
 <%--
   Created by IntelliJ IDEA.
   User: Mvideo
