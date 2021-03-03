@@ -1,10 +1,10 @@
-package ru.Korotaev.ComputerStore.RegistrationOrSignIn.Dao;
+package ru.Korotaev.ComputerStore.RegistrationorsignIn.Dao;
 
-import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.Computer;
+import ru.Korotaev.ComputerStore.RegistrationorsignIn.Model.Computer;
 
 import java.sql.*;
 
-import static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.*;
+import static ru.Korotaev.ComputerStore.RegistrationorsignIn.Model.ConnectionData.*;
 
 /***
  *This Dao class has method for computer's classes. It is select all computer's components if id equally specific value
