@@ -1,4 +1,4 @@
-<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.ComponentsDAO.PowerUnitDao" %>
+<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.Dao.ComponentsDAO.PowerUnitDao" %>
 <%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.PowerUnit" %>
 <%--
   Created by IntelliJ IDEA.

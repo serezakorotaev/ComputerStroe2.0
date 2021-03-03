@@ -1,6 +1,6 @@
 package ru.Korotaev.ComputerStore.RegistrationOrSignIn.Servlet;
 
-import ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.UserDao;
+import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Dao.UserDao;
 import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.User;
 
 import javax.servlet.ServletException;

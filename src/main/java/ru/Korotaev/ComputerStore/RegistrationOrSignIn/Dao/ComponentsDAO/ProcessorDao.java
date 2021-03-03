@@ -1,6 +1,6 @@
-package ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.ComponentsDAO;
+package ru.Korotaev.ComputerStore.RegistrationOrSignIn.Dao.ComponentsDAO;
 
-import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.VideoCard;
+import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.Processor;
 
 import java.sql.*;
 
@@ -8,33 +8,32 @@ import static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionDat
 import static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.PASSWORD;
 
 /***
- * This DAO class with method for connection and actions with Video Card Database. It is
- * select all information about Video Card which has specified value id, insert Video Card into shoppingCart with
- * specified value count,update in Video Card quantity count on quantity value count and found counts how mane different Video Card
+ * This DAO class with method for connection and actions with processor Database. It is
+ * select all information about processor which has specified value id, insert processor into shoppingCart with
+ * specified value count,update in processor quantity count on quantity value count and found counts how mane different processor
  * on the warehouse.
  *
  * @version 15.0.01
  * @autor Sergey Korotaev
  */
-public class VideoCardDao {
+public class ProcessorDao {
     /**
-     * @param videoCard - is Video Card object with specified id by which found name,
-     *                  price and count it is Video Card.
-     * @see VideoCard
+     * @param processor - is processor object with specified id by which found name,
+     *                  price and count it is processor.
+     * @see Processor
      */
-    public void select(VideoCard videoCard) {
-        final String SELECT_QUERY = "Select * from videocard where  id=?";
+    public void select(Processor processor) {
         try {
             Class.forName(DRIVER);
             Connection connection = DriverManager.getConnection(URL , USER , PASSWORD);
-            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUERY);
-            preparedStatement.setInt(1 , videoCard.getId());
+            PreparedStatement preparedStatement = connection.prepareStatement("Select * from processor where id=?");
+            preparedStatement.setInt(1 , processor.getId());
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                videoCard.setId(resultSet.getInt("id"));
-                videoCard.setName(resultSet.getString("name"));
-                videoCard.setPrice(resultSet.getInt("price"));
-                videoCard.setCounts(resultSet.getInt("counts"));
+                processor.setId(resultSet.getInt("id"));
+                processor.setName(resultSet.getString("name"));
+                processor.setPrice(resultSet.getInt("price"));
+                processor.setCounts(resultSet.getInt("counts"));
             }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
@@ -42,10 +41,10 @@ public class VideoCardDao {
     }
 
     /**
-     * @param name  - by specified Video Card which user choose
-     * @param price - by specified Video Card
-     * @param count - by specified Video Card
-     * @see VideoCard
+     * @param name  - by specified processor which user choose
+     * @param price - by specified processor
+     * @param count - by specified processor
+     * @see Processor
      */
     public void insertPowerUnitIntoShoppingCart(String name , int price , int count) {
         try {
@@ -62,15 +61,15 @@ public class VideoCardDao {
     }
 
     /**
-     * @param count - is value by which update count in warehouse about Video Card
-     * @param id    specified indicator Video Card
-     * @see VideoCard
+     * @param count - is value by which update count in warehouse about processor
+     * @param id    - specified indicator processor
+     * @see Processor
      */
     public void updateInPowerUnitQuantityCount(int count , int id) {
         try {
             Class.forName(DRIVER);
             Connection connection = DriverManager.getConnection(URL , USER , PASSWORD);
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE videocard set counts=? where id=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("Update processor set counts=? where id=?");
             preparedStatement.setInt(1 , count);
             preparedStatement.setInt(2 , id);
             preparedStatement.executeUpdate();
@@ -80,17 +79,16 @@ public class VideoCardDao {
     }
 
     /**
-     * @return - count lines from videocard Database
+     * @return - count lines from processor Database
      */
-    public int countVideoCard() {
-        final String SELECT_ALL = "SELECT * from videocard";
+    public int countProcessor() {
         int n = 0;
         try {
             Class.forName(DRIVER);
             Connection connection = DriverManager.getConnection(URL , USER , PASSWORD);
             connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
             connection.setAutoCommit(false);
-            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL);
+            PreparedStatement preparedStatement = connection.prepareStatement("Select * from processor");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 n++;

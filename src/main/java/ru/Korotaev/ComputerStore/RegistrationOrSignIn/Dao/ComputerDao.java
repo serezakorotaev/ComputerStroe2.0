@@ -1,4 +1,4 @@
-package ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO;
+package ru.Korotaev.ComputerStore.RegistrationOrSignIn.Dao;
 
 import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.Computer;
 
@@ -20,10 +20,9 @@ public class ComputerDao {
      * @see Computer
      */
     public void select(Computer computer) {
-        final String SELECT_QUERY = "Select * from madecomputers where id =?";
         try (
                 Connection connection = DriverManager.getConnection(URL , USER , PASSWORD);
-                PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUERY)) {
+                PreparedStatement preparedStatement = connection.prepareStatement("Select * from madecomputers where id =?")) {
             preparedStatement.setInt(1 , computer.getId());
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {

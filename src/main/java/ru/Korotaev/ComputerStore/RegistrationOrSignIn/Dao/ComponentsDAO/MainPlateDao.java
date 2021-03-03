@@ -1,40 +1,38 @@
-package ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.ComponentsDAO;
+package ru.Korotaev.ComputerStore.RegistrationOrSignIn.Dao.ComponentsDAO;
 
-import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.Processor;
+import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.MainPlate;
 
 import java.sql.*;
 
 import static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.*;
-import static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.PASSWORD;
 
 /***
- * This DAO class with method for connection and actions with processor Database. It is
- * select all information about processor which has specified value id, insert processor into shoppingCart with
- * specified value count,update in processor quantity count on quantity value count and found counts how mane different processor
+ * This DAO class with method for connection and actions with mainplate Database. It is
+ * select all information about main plate which has specified value id, insert main plate into shoppingCart with
+ * specified value count,update in main plate quantity count on quantity value count and found counts how mane different plate
  * on the warehouse.
  *
  * @version 15.0.01
  * @autor Sergey Korotaev
  */
-public class ProcessorDao {
+public class MainPlateDao {
     /**
-     * @param processor - is processor object with specified id by which found name,
-     *                  price and count it is processor.
-     * @see Processor
+     * @param manePlate - is mane plate object with specified id by which found name,
+     *                  price and count it is main plate.
+     * @see MainPlate
      */
-    public void select(Processor processor) {
-        final String SELECT_QUERY = "Select * from processor where id=?";
+    public void select(MainPlate manePlate) {
         try {
             Class.forName(DRIVER);
             Connection connection = DriverManager.getConnection(URL , USER , PASSWORD);
-            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUERY);
-            preparedStatement.setInt(1 , processor.getId());
+            PreparedStatement preparedStatement = connection.prepareStatement("Select * from mainplate where id=?");
+            preparedStatement.setInt(1 , manePlate.getId());
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                processor.setId(resultSet.getInt("id"));
-                processor.setName(resultSet.getString("name"));
-                processor.setPrice(resultSet.getInt("price"));
-                processor.setCounts(resultSet.getInt("counts"));
+                manePlate.setId(resultSet.getInt("id"));
+                manePlate.setName(resultSet.getString("name"));
+                manePlate.setPrice(resultSet.getInt("price"));
+                manePlate.setCounts(resultSet.getInt("counts"));
             }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
@@ -42,12 +40,12 @@ public class ProcessorDao {
     }
 
     /**
-     * @param name  - by specified processor which user choose
-     * @param price - by specified processor
-     * @param count - by specified processor
-     * @see Processor
+     * @param name  - by specified main plate which user choose
+     * @param price - by specified main plate
+     * @param count - by specified main plate
+     * @see MainPlate
      */
-    public void insertPowerUnitIntoShoppingCart(String name , int price , int count) {
+    public void insertMainPlateIntoShoppingCart(String name , int price , int count) {
         try {
             Class.forName(DRIVER);
             Connection connection = DriverManager.getConnection(URL , USER , PASSWORD);
@@ -62,15 +60,15 @@ public class ProcessorDao {
     }
 
     /**
-     * @param count - is value by which update count in warehouse about processor
-     * @param id    - specified indicator processor
-     * @see Processor
+     * @param count - is value by which update count in warehouse about main plate
+     * @param id    - specified indicator main plate
+     * @see MainPlate
      */
-    public void updateInPowerUnitQuantityCount(int count , int id) {
+    public void updateInMainPlateQuantityCount(int count , int id) {
         try {
             Class.forName(DRIVER);
             Connection connection = DriverManager.getConnection(URL , USER , PASSWORD);
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE processor set counts=? where id=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("Update mainPlate set counts=? where id=?");
             preparedStatement.setInt(1 , count);
             preparedStatement.setInt(2 , id);
             preparedStatement.executeUpdate();
@@ -80,17 +78,16 @@ public class ProcessorDao {
     }
 
     /**
-     * @return - count lines from processor Database
+     * @return - count lines from mainplate Database
      */
-    public int countProcessor() {
-        final String SELECT_ALL = "SELECT * from processor";
+    public int countMainPlate() {
         int n = 0;
         try {
             Class.forName(DRIVER);
             Connection connection = DriverManager.getConnection(URL , USER , PASSWORD);
             connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
             connection.setAutoCommit(false);
-            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL);
+            PreparedStatement preparedStatement = connection.prepareStatement("Select * from mainplate");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 n++;

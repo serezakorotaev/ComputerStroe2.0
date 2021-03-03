@@ -1,4 +1,4 @@
-package ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO;
+package ru.Korotaev.ComputerStore.RegistrationOrSignIn.Dao;
 
 import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.User;
 
@@ -19,10 +19,9 @@ public class UserDao {
      * @see User
      */
     public void save(User user) {
-        final String INSERT_QUERY = "INSERT INTO Users (login,password) VALUES (?,?)";
         try (
                 Connection connection = DriverManager.getConnection(URL , USER , PASSWORD);
-                PreparedStatement preparedStatement = connection.prepareStatement(INSERT_QUERY)) {
+                PreparedStatement preparedStatement = connection.prepareStatement("Insert into Users (login,password) values (?,?)")) {
             preparedStatement.setString(1 , user.getLogin());
             preparedStatement.setString(2 , user.getPassword());
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -45,8 +44,8 @@ public class UserDao {
             Class.forName(DRIVER);
             Connection connection = DriverManager.getConnection(URL , USER , PASSWORD);
             connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
-            connection.setAutoCommit(false);//создать дао с методами select по логину и паролю. просто по логину
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Users where login = ?");
+            connection.setAutoCommit(false);
+            PreparedStatement preparedStatement = connection.prepareStatement("Select * From Users where login = ?");
             preparedStatement.setString(1 , login);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
@@ -70,7 +69,7 @@ public class UserDao {
             Connection connection = DriverManager.getConnection(URL , USER , PASSWORD);
             connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
             connection.setAutoCommit(false);
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Users where login = ? and password=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("Select * from Users where login = ? and password=?");
             preparedStatement.setString(1 , login);
             preparedStatement.setString(2 , password);
             ResultSet resultSet = preparedStatement.executeQuery();

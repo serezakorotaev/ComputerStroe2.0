@@ -1,4 +1,4 @@
-<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.ComponentsDAO.VideoCardDao" %>
+<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.Dao.ComponentsDAO.VideoCardDao" %>
 <%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.VideoCard" %>
 <%--
   Created by IntelliJ IDEA.

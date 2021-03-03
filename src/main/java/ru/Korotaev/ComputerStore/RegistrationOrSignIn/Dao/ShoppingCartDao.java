@@ -1,4 +1,4 @@
-package ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO;
+package ru.Korotaev.ComputerStore.RegistrationOrSignIn.Dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -23,7 +23,7 @@ public class ShoppingCartDao {
         try {
             Class.forName(DRIVER);
             Connection connection = DriverManager.getConnection(URL , USER , PASSWORD);
-            PreparedStatement preparedStatement = connection.prepareStatement("DELETE from shoppingcart");
+            PreparedStatement preparedStatement = connection.prepareStatement("Delete from shoppingcart");
             preparedStatement.executeUpdate();
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();

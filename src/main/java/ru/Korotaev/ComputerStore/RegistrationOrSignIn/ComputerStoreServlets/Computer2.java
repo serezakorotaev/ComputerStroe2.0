@@ -1,6 +1,6 @@
 package ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets;
 
-import ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.ComputerDao;
+import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Dao.ComputerDao;
 import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.Computer;
 
 import javax.servlet.ServletException;

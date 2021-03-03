@@ -1,6 +1,6 @@
 package ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Components;
 
-import ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.ComponentsDAO.VideoCardDao;
+import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Dao.ComponentsDAO.VideoCardDao;
 import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.VideoCard;
 
 import javax.servlet.ServletException;

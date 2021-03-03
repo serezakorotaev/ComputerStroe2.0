@@ -1,6 +1,6 @@
 package ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Components;
 
-import ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.ComponentsDAO.ProcessorDao;
+import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Dao.ComponentsDAO.ProcessorDao;
 
 import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.Processor;
 

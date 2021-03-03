@@ -1,4 +1,6 @@
-package ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.ComponentsDAO;
+package ru.Korotaev.ComputerStore.RegistrationOrSignIn.Dao.ComponentsDAO;
+
+import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.PowerUnit;
 
 import java.sql.*;
 
@@ -6,33 +8,32 @@ import static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionDat
 import static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.PASSWORD;
 
 /***
- * This DAO class with method for connection and actions with RAM Memory Database. It is
- * select all information about RAM Memory which has specified value id, insert RAM Memory into shoppingCart with
- * specified value count,update in RAM Memory quantity count on quantity value count and found counts how mane different RAM Memory
+ * This DAO class with method for connection and actions with powerunit Database. It is
+ * select all information about power unit which has specified value id, insert power unit into shoppingCart with
+ * specified value count,update in power unit quantity count on quantity value count and found counts how mane different power unit
  * on the warehouse.
  *
  * @version 15.0.01
  * @autor Sergey Korotaev
  */
-public class RamMemoryDao {
+public class PowerUnitDao {
     /**
-     * @param ramMemory - is RAM Memory object with specified id by which found name,
-     *                  price and count it is RAM Memory.
-     * @see ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.RamMemory
+     * @param powerUnit - is power unit object with specified id by which found name,
+     *                  price and count it is power unit.
+     * @see PowerUnit
      */
-    public void select(ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.RamMemory ramMemory) {
-        final String SELECT_QUERY = "Select * from rammemory where id=?";
+    public void select(PowerUnit powerUnit) {
         try {
             Class.forName(DRIVER);
             Connection connection = DriverManager.getConnection(URL , USER , PASSWORD);
-            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUERY);
-            preparedStatement.setInt(1 , ramMemory.getId());
+            PreparedStatement preparedStatement = connection.prepareStatement("Select * from powerunit where id=?");
+            preparedStatement.setInt(1 , powerUnit.getId());
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                ramMemory.setId(resultSet.getInt("id"));
-                ramMemory.setName(resultSet.getString("name"));
-                ramMemory.setPrice(resultSet.getInt("price"));
-                ramMemory.setCounts(resultSet.getInt("counts"));
+                powerUnit.setId(resultSet.getInt("id"));
+                powerUnit.setName(resultSet.getString("name"));
+                powerUnit.setPrice(resultSet.getInt("price"));
+                powerUnit.setCounts(resultSet.getInt("counts"));
             }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
@@ -40,10 +41,10 @@ public class RamMemoryDao {
     }
 
     /**
-     * @param name  - by specified RAM Memory which user choose
-     * @param price - by specified RAM Memory
-     * @param count - by specified RAM Memory
-     * @see ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.RamMemory
+     * @param name  - by specified power unit which user choose
+     * @param price - by specified power unit
+     * @param count - by specified power unit
+     * @see PowerUnit
      */
     public void insertPowerUnitIntoShoppingCart(String name , int price , int count) {
         try {
@@ -60,15 +61,15 @@ public class RamMemoryDao {
     }
 
     /**
-     * @param count - is value by which update count in warehouse about RAM Memory
-     * @param id    - specified indicator RAM Memory
-     * @see ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.RamMemory
+     * @param count - is value by which update count in warehouse about power unit
+     * @param id    - specified indicator power unit
+     * @see PowerUnit
      */
     public void updateInPowerUnitQuantityCount(int count , int id) {
         try {
             Class.forName(DRIVER);
             Connection connection = DriverManager.getConnection(URL , USER , PASSWORD);
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE rammemory set counts=? where id=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("Update powerunit set counts=? where id=?");
             preparedStatement.setInt(1 , count);
             preparedStatement.setInt(2 , id);
             preparedStatement.executeUpdate();
@@ -78,17 +79,16 @@ public class RamMemoryDao {
     }
 
     /**
-     * @return - count lines from rammemory Database
+     * @return - count lines from powerunit Database
      */
-    public int countRamMemory() {
-        final String SELECT_ALL = "SELECT * from rammemory";
+    public int countPowerUnit() {
         int n = 0;
         try {
             Class.forName(DRIVER);
             Connection connection = DriverManager.getConnection(URL , USER , PASSWORD);
             connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
             connection.setAutoCommit(false);
-            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL);
+            PreparedStatement preparedStatement = connection.prepareStatement("Select * from powerunit");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 n++;

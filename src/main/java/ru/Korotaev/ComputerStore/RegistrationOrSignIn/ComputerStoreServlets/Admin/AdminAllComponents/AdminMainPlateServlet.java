@@ -1,7 +1,7 @@
 package ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Admin.AdminAllComponents;
 
 
-import ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.ComponentsDAO.MainPlateDao;
+import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Dao.ComponentsDAO.MainPlateDao;
 import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.MainPlate;
 
 import javax.servlet.ServletException;

@@ -1,7 +1,7 @@
 package ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.Components;
 
 
-import ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.ComponentsDAO.PowerUnitDao;
+import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Dao.ComponentsDAO.PowerUnitDao;
 
 import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.PowerUnit;
 

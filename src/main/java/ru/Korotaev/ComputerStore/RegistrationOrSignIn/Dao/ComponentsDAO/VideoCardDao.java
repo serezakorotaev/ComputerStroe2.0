@@ -1,39 +1,39 @@
-package ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.ComponentsDAO;
+package ru.Korotaev.ComputerStore.RegistrationOrSignIn.Dao.ComponentsDAO;
 
-import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.MainPlate;
+import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ComponentModel.VideoCard;
 
 import java.sql.*;
 
 import static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.*;
+import static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.PASSWORD;
 
 /***
- * This DAO class with method for connection and actions with mainplate Database. It is
- * select all information about main plate which has specified value id, insert main plate into shoppingCart with
- * specified value count,update in main plate quantity count on quantity value count and found counts how mane different plate
+ * This DAO class with method for connection and actions with Video Card Database. It is
+ * select all information about Video Card which has specified value id, insert Video Card into shoppingCart with
+ * specified value count,update in Video Card quantity count on quantity value count and found counts how mane different Video Card
  * on the warehouse.
  *
  * @version 15.0.01
  * @autor Sergey Korotaev
  */
-public class MainPlateDao {
+public class VideoCardDao {
     /**
-     * @param manePlate - is mane plate object with specified id by which found name,
-     *                  price and count it is main plate.
-     * @see MainPlate
+     * @param videoCard - is Video Card object with specified id by which found name,
+     *                  price and count it is Video Card.
+     * @see VideoCard
      */
-    public void select(MainPlate manePlate) {
-        final String SELECT_QUERY = "Select * from mainplate where id=?";
+    public void select(VideoCard videoCard) {
         try {
             Class.forName(DRIVER);
             Connection connection = DriverManager.getConnection(URL , USER , PASSWORD);
-            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUERY);
-            preparedStatement.setInt(1 , manePlate.getId());
+            PreparedStatement preparedStatement = connection.prepareStatement("Select * from videocard where  id=?");
+            preparedStatement.setInt(1 , videoCard.getId());
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                manePlate.setId(resultSet.getInt("id"));
-                manePlate.setName(resultSet.getString("name"));
-                manePlate.setPrice(resultSet.getInt("price"));
-                manePlate.setCounts(resultSet.getInt("counts"));
+                videoCard.setId(resultSet.getInt("id"));
+                videoCard.setName(resultSet.getString("name"));
+                videoCard.setPrice(resultSet.getInt("price"));
+                videoCard.setCounts(resultSet.getInt("counts"));
             }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
@@ -41,12 +41,12 @@ public class MainPlateDao {
     }
 
     /**
-     * @param name  - by specified main plate which user choose
-     * @param price - by specified main plate
-     * @param count - by specified main plate
-     * @see MainPlate
+     * @param name  - by specified Video Card which user choose
+     * @param price - by specified Video Card
+     * @param count - by specified Video Card
+     * @see VideoCard
      */
-    public void insertMainPlateIntoShoppingCart(String name , int price , int count) {
+    public void insertPowerUnitIntoShoppingCart(String name , int price , int count) {
         try {
             Class.forName(DRIVER);
             Connection connection = DriverManager.getConnection(URL , USER , PASSWORD);
@@ -61,15 +61,15 @@ public class MainPlateDao {
     }
 
     /**
-     * @param count - is value by which update count in warehouse about main plate
-     * @param id    - specified indicator main plate
-     * @see MainPlate
+     * @param count - is value by which update count in warehouse about Video Card
+     * @param id    specified indicator Video Card
+     * @see VideoCard
      */
-    public void updateInMainPlateQuantityCount(int count , int id) {
+    public void updateInPowerUnitQuantityCount(int count , int id) {
         try {
             Class.forName(DRIVER);
             Connection connection = DriverManager.getConnection(URL , USER , PASSWORD);
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE mainPlate set counts=? where id=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("Update videocard set counts=? where id=?");
             preparedStatement.setInt(1 , count);
             preparedStatement.setInt(2 , id);
             preparedStatement.executeUpdate();
@@ -79,17 +79,16 @@ public class MainPlateDao {
     }
 
     /**
-     * @return - count lines from mainplate Database
+     * @return - count lines from videocard Database
      */
-    public int countMainPlate() {
-        final String SELECT_ALL = "SELECT * from mainplate";
+    public int countVideoCard() {
         int n = 0;
         try {
             Class.forName(DRIVER);
             Connection connection = DriverManager.getConnection(URL , USER , PASSWORD);
             connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
             connection.setAutoCommit(false);
-            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL);
+            PreparedStatement preparedStatement = connection.prepareStatement("Select * from videocard");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 n++;

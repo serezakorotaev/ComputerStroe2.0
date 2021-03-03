@@ -1,6 +1,6 @@
 package ru.Korotaev.ComputerStore.RegistrationOrSignIn.ComputerStoreServlets.ShoppingCartServlet;
 
-import ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.ShoppingCartDao;
+import ru.Korotaev.ComputerStore.RegistrationOrSignIn.Dao.ShoppingCartDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

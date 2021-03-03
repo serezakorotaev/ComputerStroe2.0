@@ -1,5 +1,5 @@
 <%@ page import="static ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.ConnectionData.DRIVER" %>
-<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.DAO.ComputerDao" %>
+<%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.Dao.ComputerDao" %>
 <%@ page import="ru.Korotaev.ComputerStore.RegistrationOrSignIn.Model.Computer" %><%--
   Created by IntelliJ IDEA.
   User: Mvideo
