@@ -44,7 +44,7 @@ public class ShoppingCart {
 
     /**
      *
-     * @return id at shopping cart object
+     * @return - id at shopping cart object
      */
     public int getId() {
         return id;
@@ -52,7 +52,7 @@ public class ShoppingCart {
 
     /**
      *
-     * @param id by shopping cart object
+     * @param id - by shopping cart object
      */
     public void setId(int id) {
         this.id = id;
@@ -60,7 +60,7 @@ public class ShoppingCart {
 
     /**
      *
-     * @return name at shopping cart object
+     * @return - name at shopping cart object
      */
     public String getName() {
         return name;
@@ -68,7 +68,7 @@ public class ShoppingCart {
 
     /**
      *
-     * @param name by shopping cart object
+     * @param name - by shopping cart object
      */
     public void setName(String name) {
         this.name = name;
@@ -76,7 +76,7 @@ public class ShoppingCart {
 
     /**
      *
-     * @return price at shopping cart
+     * @return - price at shopping cart
      */
     public int getPrice() {
         return price;
@@ -84,7 +84,7 @@ public class ShoppingCart {
 
     /**
      *
-     * @param price by shopping cart object
+     * @param price - by shopping cart object
      */
     public void setPrice(int price) {
         this.price = price;
@@ -92,7 +92,7 @@ public class ShoppingCart {
 
     /**
      *
-     * @return count at shopping cart object
+     * @return - count at shopping cart object
      */
     public int getCounts() {
         return counts;
@@ -100,7 +100,7 @@ public class ShoppingCart {
 
     /**
      *
-     * @param counts by shopping cart object
+     * @param counts - by shopping cart object
      */
     public void setCounts(int counts) {
         this.counts = counts;
@@ -108,8 +108,8 @@ public class ShoppingCart {
 
     /**
      *
-     * @param o this other shopping cart object if this exits
-     * @return true or false by comparison elements
+     * @param o - this other shopping cart object if this exits
+     * @return - true or false by comparison elements
      */
     @Override
     public boolean equals(Object o) {
@@ -121,7 +121,7 @@ public class ShoppingCart {
 
     /**
      *
-     * @return hashCode at shopping cart object
+     * @return - hashCode at shopping cart object
      */
     @Override
     public int hashCode() {
@@ -130,7 +130,7 @@ public class ShoppingCart {
 
     /**
      *
-     * @return String about information with field shopping cart class
+     * @return - string about information with field shopping cart class
      */
     @Override
     public String toString() {

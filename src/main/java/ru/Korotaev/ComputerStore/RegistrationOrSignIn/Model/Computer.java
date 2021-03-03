@@ -194,7 +194,7 @@ public class Computer {
     }
 
     /**
-     * @return - String about information with fields computer class
+     * @return - string about information with fields computer class
      */
     @Override
     public String toString() {
